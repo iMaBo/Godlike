@@ -13,3 +13,5 @@ commands:
     description: Get bow with all enchantments
   Tools:
     description: Get tools with all enchantments
+  God:
+    description: Get Golden apple effect

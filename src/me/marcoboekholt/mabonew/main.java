@@ -9,6 +9,8 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
  
 public class main extends JavaPlugin {
  
@@ -112,6 +114,13 @@ public class main extends JavaPlugin {
                 	pl.addItem(spade);
                 	pl.addItem(hoe);
                 	player.sendMessage(ChatColor.DARK_RED + ("*~*") + ChatColor.GREEN + (" You got the tools!"));
+                }
+                else if(cmd.getName().equalsIgnoreCase("God")){
+                	player.addPotionEffect(new PotionEffect(PotionEffectType.FIRE_RESISTANCE, 2400, 1));
+                	player.addPotionEffect(new PotionEffect(PotionEffectType.REGENERATION, 2400, 1));
+                	player.addPotionEffect(new PotionEffect(PotionEffectType.DAMAGE_RESISTANCE, 2400, 1));
+                	
+                	player.sendMessage(ChatColor.DARK_RED + ("*~*") + ChatColor.GREEN + (" You have now for 2 min. Golden apple effects!"));
                 }
                 return false;
                
