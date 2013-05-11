@@ -14,12 +14,12 @@ public class main extends JavaPlugin {
  
        
         public void onEnable(){
-                getLogger().info("[pluginname] is Enabled!");
+                getLogger().info("[Godlike] is Enabled!");
                
         }
        
         public void onDisable(){
-                getLogger().info("[pluginname is Disabled");
+                getLogger().info("[Godlike] is Disabled");
         }
        
         public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args){
@@ -83,6 +83,35 @@ public class main extends JavaPlugin {
                         pl.addItem(legs);
                         pl.addItem(boots);
                         player.sendMessage(ChatColor.DARK_RED + ("*~*") + ChatColor.GREEN + (" You got the armour!"));
+                }
+                else if(cmd.getName().equalsIgnoreCase("Tools")){
+                	ItemStack pickaxe = new ItemStack(Material.DIAMOND_PICKAXE, 1);
+                	pickaxe.addEnchantment(Enchantment.DIG_SPEED, 5);
+                	pickaxe.addEnchantment(Enchantment.SILK_TOUCH, 1);
+                	pickaxe.addEnchantment(Enchantment.DURABILITY, 3);
+                	pickaxe.addEnchantment(Enchantment.LOOT_BONUS_BLOCKS, 3);
+                	
+                	ItemStack axe = new ItemStack(Material.DIAMOND_AXE, 1);
+                	axe.addEnchantment(Enchantment.DIG_SPEED, 5);
+                	axe.addEnchantment(Enchantment.SILK_TOUCH, 1);
+                	axe.addEnchantment(Enchantment.DURABILITY, 3);
+                	pickaxe.addEnchantment(Enchantment.LOOT_BONUS_BLOCKS, 3);
+                	
+                	ItemStack spade = new ItemStack(Material.DIAMOND_SPADE, 1);
+                	spade.addEnchantment(Enchantment.DIG_SPEED, 5);
+                	spade.addEnchantment(Enchantment.SILK_TOUCH, 1);
+                	spade.addEnchantment(Enchantment.DURABILITY, 3);
+                	pickaxe.addEnchantment(Enchantment.LOOT_BONUS_BLOCKS, 3);
+                	
+                	ItemStack hoe = new ItemStack(Material.DIAMOND_HOE, 1);
+                	hoe.addEnchantment(Enchantment.DURABILITY, 3);
+                	
+                	PlayerInventory pl = player.getInventory();
+                	pl.addItem(pickaxe);
+                	pl.addItem(axe);
+                	pl.addItem(spade);
+                	pl.addItem(hoe);
+                	player.sendMessage(ChatColor.DARK_RED + ("*~*") + ChatColor.GREEN + (" You got the tools!"));
                 }
                 return false;
                

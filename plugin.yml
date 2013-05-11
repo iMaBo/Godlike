@@ -11,3 +11,5 @@ commands:
     description: Get armour with all enchantments
   Bow:
     description: Get bow with all enchantments
+  Tools:
+    description: Get bow with all enchantments
