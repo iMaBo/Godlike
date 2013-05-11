@@ -12,4 +12,4 @@ commands:
   Bow:
     description: Get bow with all enchantments
   Tools:
-    description: Get bow with all enchantments
+    description: Get tools with all enchantments
