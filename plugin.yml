@@ -1,0 +1,13 @@
+name: Godlike
+main: me.marcoboekholt.mabonew.main
+version: 1.0
+description: >
+             my first plugin
+
+commands:
+  Sword:
+    description: Get sword with all enchantments
+  Armour:
+    description: Get armour with all enchantments
+  Bow:
+    description: Get bow with all enchantments
