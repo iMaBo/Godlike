@@ -1,6 +1,7 @@
 name: Godlike
 main: me.marcoboekholt.mabonew.main
 version: 1.0
+author: Marco Boekholt
 description: >
              my first plugin
 
@@ -15,3 +16,7 @@ commands:
     description: Get tools with all enchantments
   God:
     description: Get Golden apple effect
+  power:
+    description: get defence and strenght power
+  fly:
+    description: get fly powers!

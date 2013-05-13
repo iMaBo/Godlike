@@ -122,6 +122,21 @@ public class main extends JavaPlugin {
                 	
                 	player.sendMessage(ChatColor.DARK_RED + ("*~*") + ChatColor.GREEN + (" You have now for 2 min. Golden apple effects!"));
                 }
+                else if(cmd.getName().equalsIgnoreCase("power")){
+                	player.addPotionEffect(new PotionEffect(PotionEffectType.DAMAGE_RESISTANCE, 2400, 1));
+                	player.addPotionEffect(new PotionEffect(PotionEffectType.INCREASE_DAMAGE, 2400, 1));
+                }
+                else if(cmd.getName().equalsIgnoreCase("fly")){
+                	if(player.getAllowFlight()) {
+                		player.setFlying(false);
+                		player.setAllowFlight(false);
+                		player.sendMessage(ChatColor.DARK_RED + ("*~*") + ChatColor.GREEN + (" Fly powers disabled!"));
+                	} else {
+                		player.setAllowFlight(true);
+                		player.setFlySpeed(0.5F);
+                		player.sendMessage(ChatColor.DARK_RED + ("*~*") + ChatColor.GREEN + (" Fly powers enabled!"));
+                	}
+                }
                 return false;
                
         }
