@@ -8,17 +8,62 @@ description: >
 commands:
   Sword:
     description: Get sword with all enchantments
+    permissions: Godlike.sword
   Armour:
     description: Get armour with all enchantments
+    permissions: Godlike.armour
   Bow:
     description: Get bow with all enchantments
+    permissions: Godlike.bow
   Tools:
     description: Get tools with all enchantments
+    permissions: Godlike.tools
   God:
     description: Get Golden apple effect
+    permissions: Godlike.god
   power:
     description: Get defence and strenght power
+    permissions: Godlike.power
   fly:
     description: Get fly powers!
+    permissions: Godlike.fly
   speed:
     description: Walk faster then normal
+    permissions: Godlike.speed
+    
+permissions:
+  Godlike.*:
+    description: Gives acces to all Commands
+    children:
+      Godlike.sword: true
+      Godlike.armour: true
+      Godlike.bow: true
+      Godlike.tools: true
+      Godlike.god: true
+      Godlike.power: true
+      Godlike.fly: true
+      Godlike.speed: true
+   Godlike.sword
+     description: Allows you to spawn a sword!
+     default: true
+   Godlike.armour
+     description: Allows you to spawn armour!
+     default: true
+   Godlike.bow
+     description: Allows you to spawn a bow with arrows!
+     default: true
+   Godlike.tools
+     description: Allows you to spawn tools!
+     default: true
+   Godlike.god
+     description: Allows you to get golden apple effects!
+     default: true
+   Godlike.power
+     description: Allows you to get defence and strenght power!
+     default: true
+   Godlike.fly
+     description: Allows you to fly!
+     default: true
+   Godlike.speed
+     description: Allows you to run faster!
+     default: true
