@@ -17,6 +17,8 @@ commands:
   God:
     description: Get Golden apple effect
   power:
-    description: get defence and strenght power
+    description: Get defence and strenght power
   fly:
-    description: get fly powers!
+    description: Get fly powers!
+  speed:
+    description: Walk faster then normal

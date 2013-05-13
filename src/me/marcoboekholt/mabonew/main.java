@@ -125,6 +125,8 @@ public class main extends JavaPlugin {
                 else if(cmd.getName().equalsIgnoreCase("power")){
                 	player.addPotionEffect(new PotionEffect(PotionEffectType.DAMAGE_RESISTANCE, 2400, 1));
                 	player.addPotionEffect(new PotionEffect(PotionEffectType.INCREASE_DAMAGE, 2400, 1));
+                	
+                	player.sendMessage(ChatColor.DARK_RED + ("*~*") + ChatColor.GREEN + (" You have now for 2 min. defence and strenght!"));
                 }
                 else if(cmd.getName().equalsIgnoreCase("fly")){
                 	if(player.getAllowFlight()) {
@@ -136,6 +138,11 @@ public class main extends JavaPlugin {
                 		player.setFlySpeed(0.5F);
                 		player.sendMessage(ChatColor.DARK_RED + ("*~*") + ChatColor.GREEN + (" Fly powers enabled!"));
                 	}
+                }
+                else if(cmd.getName().equalsIgnoreCase("speed")){
+                	player.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 2400, 1));
+                	
+                	player.sendMessage(ChatColor.DARK_RED + ("*~*") + ChatColor.GREEN + (" You have now for 2 min. speed!"));
                 }
                 return false;
                
