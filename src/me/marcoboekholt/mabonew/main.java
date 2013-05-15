@@ -24,7 +24,7 @@ public class main extends JavaPlugin {
          
                 this.updateChecker = new UpdateChecker(this, "http://dev.bukkit.org/server-mods/godlike/files.rss");
                 if (this.updateChecker.updateNeeded()){
-                	this.log.info("There is a new update availableL: " + this.updateChecker.getVersion());
+                	this.log.info("There is a new update available: " + this.updateChecker.getVersion());
                 	this.log.info("Get it from: " + this.updateChecker.getLink());
                 }
         }
