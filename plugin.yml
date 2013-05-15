@@ -2,12 +2,11 @@ name: Godlike
 main: me.marcoboekholt.mabonew.main
 version: 1.0
 author: Marco Boekholt
-description: >
-             my first plugin
+description: This plugin will give you the highest possible enchantment on armour and weapons.
 
 commands:
   Sword:
-    description: Get sword with all enchantments
+    description: Get a sword with all enchantments
     permissions: Godlike.sword
   Armour:
     description: Get armour with all enchantments
@@ -19,21 +18,21 @@ commands:
     description: Get tools with all enchantments
     permissions: Godlike.tools
   God:
-    description: Get Golden apple effect
+    description: Get the effect you get from eating an apple
     permissions: Godlike.god
   power:
-    description: Get defence and strenght power
+    description: Get defence and strength powers
     permissions: Godlike.power
   fly:
     description: Get fly powers!
     permissions: Godlike.fly
   speed:
-    description: Walk faster then normal
+    description: Walk faster than normal
     permissions: Godlike.speed
     
 permissions:
    Godlike.*:
-     description: Gives access to all Godlike commands
+     description: Gives you access to all Godlike commands
      children:
        Godlike.sword: true
        Godlike.armour: true
@@ -44,26 +43,26 @@ permissions:
        Godlike.fly: true
        Godlike.speed: true
    Godlike.sword:
-     description: Allows you to get a Diamond sword!
+     description: Allows you to use the sword command
      default: op
    Godlike.armour:
-     description: Allows you to get Diamond armour!
+     description: Allows you to use the armour command
      default: op
    Godlike.bow:
-     description: AAllows you to get a Bow with Arrows!
+     description: Allows you to use the bow command
      default: op
    Godlike.tools:
-     description: Allows you to get a Diamond tools!
+     description: Allows you to use the tools command
      default: op
    Godlike.god:
-     description: Allows you to get Golden Apple effect!
+     description: Allows you to get the golden apple effects
      default: op
    Godlike.power:
-     description: Allows you to get Defence and Strenght power!
+     description: Allows you to get Defence and Strength powers
      default: op
    Godlike.fly:
-     description: Allows you to go fly!
+     description: Allows you to go fly
      default: op
    Godlike.speed:
-     description: Allows you to run faster!
+     description: Allows you to walk faster than normal
      default: op
