@@ -14,9 +14,7 @@ public class UpdateChecker {
 	
 	private main plugin;
 	private URL filesFeed;
-	
-	private String version;
-	private String link;
+	public String link;
 	
 	public UpdateChecker(main plugin, String url){
 		this.plugin = plugin;
@@ -37,11 +35,10 @@ public class UpdateChecker {
 			Node latestFile = document.getElementsByTagName("item").item(0);
 			NodeList children = latestFile.getChildNodes();
 			
-			this.version = children.item(1).getTextContent().replaceAll("[a-zA-Z ]", "");
-			this.link = children.item(3).getTextContent();
+			String version = children.item(1).getTextContent().replaceAll("[a-zA-Z ]", "");
 			
-					
-			if (!plugin.getDescription().getVersion().equals(this.version)){
+			if (!plugin.getDescription().getVersion().equals(version)){
+				this.link = children.item(3).getTextContent();
 				return true;
 			}
 		}catch (Exception e){
@@ -50,11 +47,4 @@ public class UpdateChecker {
 		return false;
 	}
 	
-	public String getVersion(){
-		return this.version;
-	}
-
-	public String getLink(){
-		return this.link;
-	}
 }
