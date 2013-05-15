@@ -33,7 +33,7 @@ public class main extends JavaPlugin {
                 	sword.addEnchantment(Enchantment.FIRE_ASPECT, 2);
                 	PlayerInventory pl = player.getInventory();
                 	pl.addItem(sword);
-                    player.sendMessage(ChatColor.DARK_RED + ("*~*") + ChatColor.GREEN + (" You got a sword!"));
+                    player.sendMessage(ChatColor.DARK_RED + ("*~*") + ChatColor.GREEN + (" You've got a sword!"));
                 }
                 else if(cmd.getName().equalsIgnoreCase("Bow")){
                     ItemStack bow = new ItemStack(Material.BOW, 1);
@@ -45,7 +45,7 @@ public class main extends JavaPlugin {
                     PlayerInventory pl = player.getInventory();
                     pl.addItem(bow);
                     pl.addItem(arrow);
-                    player.sendMessage(ChatColor.DARK_RED + ("*~*") + ChatColor.GREEN + (" You got a bow and sword!"));
+                    player.sendMessage(ChatColor.DARK_RED + ("*~*") + ChatColor.GREEN + (" You've got a bow and sword!"));
                 }
                 else if(cmd.getName().equalsIgnoreCase("Armour")){
                     ItemStack helmet = new ItemStack(Material.DIAMOND_HELMET, 1);
@@ -84,7 +84,7 @@ public class main extends JavaPlugin {
                     pl.addItem(body);
                     pl.addItem(legs);
                     pl.addItem(boots);
-                    player.sendMessage(ChatColor.DARK_RED + ("*~*") + ChatColor.GREEN + (" You got the armour!"));
+                    player.sendMessage(ChatColor.DARK_RED + ("*~*") + ChatColor.GREEN + (" You've got the armour!"));
                 }
                 else if(cmd.getName().equalsIgnoreCase("Tools")){
                 	ItemStack pickaxe = new ItemStack(Material.DIAMOND_PICKAXE, 1);
@@ -113,20 +113,20 @@ public class main extends JavaPlugin {
                 	pl.addItem(axe);
                 	pl.addItem(spade);
                 	pl.addItem(hoe);
-                	player.sendMessage(ChatColor.DARK_RED + ("*~*") + ChatColor.GREEN + (" You got the tools!"));
+                	player.sendMessage(ChatColor.DARK_RED + ("*~*") + ChatColor.GREEN + (" You've got the tools!"));
                 }
                 else if(cmd.getName().equalsIgnoreCase("God")){
                 	player.addPotionEffect(new PotionEffect(PotionEffectType.FIRE_RESISTANCE, 2400, 1));
                 	player.addPotionEffect(new PotionEffect(PotionEffectType.REGENERATION, 2400, 1));
                 	player.addPotionEffect(new PotionEffect(PotionEffectType.DAMAGE_RESISTANCE, 2400, 1));
                 	
-                	player.sendMessage(ChatColor.DARK_RED + ("*~*") + ChatColor.GREEN + (" You have now for 2 min. Golden apple effects!"));
+                	player.sendMessage(ChatColor.DARK_RED + ("*~*") + ChatColor.GREEN + (" You now have the golden apple effect for about 2 minutes!"));
                 }
                 else if(cmd.getName().equalsIgnoreCase("power")){
                 	player.addPotionEffect(new PotionEffect(PotionEffectType.DAMAGE_RESISTANCE, 2400, 1));
                 	player.addPotionEffect(new PotionEffect(PotionEffectType.INCREASE_DAMAGE, 2400, 1));
                 	
-                	player.sendMessage(ChatColor.DARK_RED + ("*~*") + ChatColor.GREEN + (" You have now for 2 min. defence and strenght!"));
+                	player.sendMessage(ChatColor.DARK_RED + ("*~*") + ChatColor.GREEN + (" You now have defence and strength effects for about 2 minutes!"));
                 }
                 else if(cmd.getName().equalsIgnoreCase("fly")){
                 	if(player.getAllowFlight()) {
@@ -142,7 +142,7 @@ public class main extends JavaPlugin {
                 else if(cmd.getName().equalsIgnoreCase("speed")){
                 	player.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 2400, 1));
                 	
-                	player.sendMessage(ChatColor.DARK_RED + ("*~*") + ChatColor.GREEN + (" You have now for 2 min. speed!"));
+                	player.sendMessage(ChatColor.DARK_RED + ("*~*") + ChatColor.GREEN + (" You now have a speed potion effect for about 2 minutes!"));
                 }
                 return false;
                
