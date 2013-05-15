@@ -1,7 +1,6 @@
 package me.marcoboekholt.mabonew;
 
 import java.io.InputStream;
-import java.net.MalformedURLException;
 import java.net.URL;
 import javax.xml.parsers.DocumentBuilderFactory;
 
@@ -11,25 +10,11 @@ import org.w3c.dom.NodeList;
 
 public class UpdateChecker {
 	
-	
-	private main plugin;
-	private URL filesFeed;
-	public String link;
-	
-	public UpdateChecker(main plugin, String url){
-		this.plugin = plugin;
-		
-		try {
-			this.filesFeed = new URL(url);
-		} catch (MalformedURLException e) {
-			e.printStackTrace();
-		}
-		
-	}
-	
-	public boolean updateNeeded() {
+	public static void updateNeeded(main plugin) {
 		try{
-			InputStream input = this.filesFeed.openConnection().getInputStream();
+			plugin.getLogger().info("Checking for updates...");
+			
+			InputStream input = (new URL("http://dev.bukkit.org/server-mods/godlike/files.rss")).openConnection().getInputStream();
 			Document document = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(input);
 			
 			Node latestFile = document.getElementsByTagName("item").item(0);
@@ -38,13 +23,14 @@ public class UpdateChecker {
 			String version = children.item(1).getTextContent().replaceAll("[a-zA-Z ]", "");
 			
 			if (!plugin.getDescription().getVersion().equals(version)){
-				this.link = children.item(3).getTextContent();
-				return true;
+				plugin.getLogger().info("There is an update available.");
+				plugin.getLogger().info("You might want to upgrade to version " + version + " at " + children.item(3).getTextContent());
 			}
-		}catch (Exception e){
+		}
+		catch (Exception e){
+			plugin.getLogger().info("Could not check for updates. Do you have a working internet connection?");
 			e.printStackTrace();
 		}
-		return false;
 	}
 	
 }

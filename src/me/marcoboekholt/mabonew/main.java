@@ -17,11 +17,8 @@ public class main extends JavaPlugin {
     protected UpdateChecker updateChecker;   
     
         public void onEnable(){
-                this.updateChecker = new UpdateChecker(this, "http://dev.bukkit.org/server-mods/godlike/files.rss");
-                if (this.updateChecker.updateNeeded()){
-                	getLogger().info("There is a new update available: " + this.updateChecker.link);
-                	getLogger().info("Get it from: " + this.updateChecker.link);
-                }
+        	// Check for updates
+        	UpdateChecker.updateNeeded(this);
         }
        
         public void onDisable(){
