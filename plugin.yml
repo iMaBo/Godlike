@@ -32,38 +32,38 @@ commands:
     permissions: Godlike.speed
     
 permissions:
-  Godlike.*:
-    description: Gives acces to all Commands
-    children:
-      Godlike.sword: true
-      Godlike.armour: true
-      Godlike.bow: true
-      Godlike.tools: true
-      Godlike.god: true
-      Godlike.power: true
-      Godlike.fly: true
-      Godlike.speed: true
-   Godlike.sword
-     description: Allows you to spawn a sword!
-     default: true
-   Godlike.armour
-     description: Allows you to spawn armour!
-     default: true
-   Godlike.bow
-     description: Allows you to spawn a bow with arrows!
-     default: true
-   Godlike.tools
-     description: Allows you to spawn tools!
-     default: true
-   Godlike.god
-     description: Allows you to get golden apple effects!
-     default: true
-   Godlike.power
-     description: Allows you to get defence and strenght power!
-     default: true
-   Godlike.fly
-     description: Allows you to fly!
-     default: true
-   Godlike.speed
+   Godlike.*:
+     description: Gives access to all Godlike commands
+     children:
+       Godlike.sword: true
+       Godlike.armour: true
+       Godlike.bow: true
+       Godlike.tools: true
+       Godlike.god: true
+       Godlike.power: true
+       Godlike.fly: true
+       Godlike.speed: true
+   Godlike.sword:
+     description: Allows you to get a Diamond sword!
+     default: op
+   Godlike.armour:
+     description: Allows you to get Diamond armour!
+     default: op
+   Godlike.bow:
+     description: AAllows you to get a Bow with Arrows!
+     default: op
+   Godlike.tools:
+     description: Allows you to get a Diamond tools!
+     default: op
+   Godlike.god:
+     description: Allows you to get Golden Apple effect!
+     default: op
+   Godlike.power:
+     description: Allows you to get Defence and Strenght power!
+     default: op
+   Godlike.fly:
+     description: Allows you to go fly!
+     default: op
+   Godlike.speed:
      description: Allows you to run faster!
-     default: true
+     default: op
