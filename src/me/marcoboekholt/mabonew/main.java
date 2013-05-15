@@ -1,5 +1,7 @@
 package me.marcoboekholt.mabonew;
  
+import java.util.logging.Logger;
+
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.command.Command;
@@ -13,15 +15,22 @@ import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
  
 public class main extends JavaPlugin {
- 
-       
+	
+	protected Logger log;
+    protected UpdateChecker updateChecker;   
+    
         public void onEnable(){
-                getLogger().info("[Godlike] is Enabled!");
-               
+                this.log = this.getLogger();
+         
+                this.updateChecker = new UpdateChecker(this, "http://dev.bukkit.org/server-mods/godlike/files.rss");
+                if (this.updateChecker.updateNeeded()){
+                	this.log.info("There is a new update availableL: " + this.updateChecker.getVersion());
+                	this.log.info("Get it from: " + this.updateChecker.getLink());
+                }
         }
        
         public void onDisable(){
-                getLogger().info("[Godlike] is Disabled");
+        	this.log = this.getLogger();
         }
        
         public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args){
