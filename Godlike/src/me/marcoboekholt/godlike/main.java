@@ -128,18 +128,6 @@ public class main extends JavaPlugin {
                 	
                 	player.sendMessage(ChatColor.DARK_RED + ("*~*") + ChatColor.GREEN + (" You now have defence and strength effects for about 2 minutes!"));
                 }
-                else if(cmd.getName().equalsIgnoreCase("fly")){
-                	if(player.getAllowFlight()) {
-                		player.setFlying(false);
-                		player.setAllowFlight(false);
-                		player.setFlySpeed(0.1F);
-                		player.sendMessage(ChatColor.DARK_RED + ("*~*") + ChatColor.GREEN + (" Fly powers disabled!"));
-                	} else {
-                		player.setAllowFlight(true);
-                		player.setFlySpeed(0.5F);
-                		player.sendMessage(ChatColor.DARK_RED + ("*~*") + ChatColor.GREEN + (" Fly powers enabled!"));
-                	}
-                }
                 else if(cmd.getName().equalsIgnoreCase("speed")){
                 	player.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 2400, 1));
                 	

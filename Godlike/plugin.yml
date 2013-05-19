@@ -23,9 +23,6 @@ commands:
   power:
     description: Get defence and strength powers
     permissions: Godlike.power
-  fly:
-    description: Get fly powers!
-    permissions: Godlike.fly
   speed:
     description: Walk faster than normal
     permissions: Godlike.speed
@@ -59,9 +56,6 @@ permissions:
      default: op
    Godlike.power:
      description: Allows you to get Defence and Strength powers
-     default: op
-   Godlike.fly:
-     description: Allows you to go fly
      default: op
    Godlike.speed:
      description: Allows you to walk faster than normal
