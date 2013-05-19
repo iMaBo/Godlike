@@ -17,8 +17,21 @@ public class main extends JavaPlugin {
     protected UpdateChecker updateChecker;   
     
         public void onEnable(){
-        	// Check for updates
-        	UpdateChecker.updateNeeded(this);
+        	// Create a config file if the user does not have one already
+        	if(getConfig().contains("config.version")) {
+        		// Set up config fields
+        		getConfig().set("updates.enabled", true);
+        		getConfig().set("config.version", 1);
+        		
+        		// Notify the user
+        		getLogger().info("Created a new config file. You might want to edit it to fit to your needs.");
+            	
+            	// Save configuration
+            	this.saveConfig();
+        	}
+        	
+	        // Check for updates
+	        UpdateChecker.updateNeeded(this);
         }
        
         public void onDisable(){
