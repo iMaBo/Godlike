@@ -1,4 +1,4 @@
-package me.marcoboekholt.godlike;
+package me.marcoboekholt.mabonew;
  
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -17,8 +17,23 @@ public class main extends JavaPlugin {
     protected UpdateChecker updateChecker;   
     
         public void onEnable(){
-        	// Check for updates
-        	UpdateChecker.updateNeeded(this);
+        	// Create a config file if the user does not have one already
+        	if(getConfig().contains("config.version")) {
+        		// Set up config fields
+        		getConfig().set("updates.enabled", true);
+        		getConfig().set("config.version", 1);
+        		
+        		// Notify the user
+        		getLogger().info("Created a new config file. You might want to edit it to fit to your needs.");
+            	
+            	// Save configuration
+            	this.saveConfig();
+        	}
+        	
+        	if(getConfig().getBoolean("updates.enabled", true)) {
+	        	// Check for updates
+	        	UpdateChecker.updateNeeded(this);
+        	}
         }
        
         public void onDisable(){
@@ -127,6 +142,17 @@ public class main extends JavaPlugin {
                 	player.addPotionEffect(new PotionEffect(PotionEffectType.INCREASE_DAMAGE, 2400, 1));
                 	
                 	player.sendMessage(ChatColor.DARK_RED + ("*~*") + ChatColor.GREEN + (" You now have defence and strength effects for about 2 minutes!"));
+                }
+                else if(cmd.getName().equalsIgnoreCase("fly")){
+                	if(player.getAllowFlight()) {
+                		player.setFlying(false);
+                		player.setAllowFlight(false);
+                		player.sendMessage(ChatColor.DARK_RED + ("*~*") + ChatColor.GREEN + (" Fly powers disabled!"));
+                	} else {
+                		player.setAllowFlight(true);
+                		player.setFlySpeed(0.5F);
+                		player.sendMessage(ChatColor.DARK_RED + ("*~*") + ChatColor.GREEN + (" Fly powers enabled!"));
+                	}
                 }
                 else if(cmd.getName().equalsIgnoreCase("speed")){
                 	player.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 2400, 1));
