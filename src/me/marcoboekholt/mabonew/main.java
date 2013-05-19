@@ -30,8 +30,10 @@ public class main extends JavaPlugin {
             	this.saveConfig();
         	}
         	
-	        // Check for updates
-	        UpdateChecker.updateNeeded(this);
+        	if(getConfig().getBoolean("updates.enabled", true)) {
+	        	// Check for updates
+	        	UpdateChecker.updateNeeded(this);
+        	}
         }
        
         public void onDisable(){
