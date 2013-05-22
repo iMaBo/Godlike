@@ -37,7 +37,6 @@ permissions:
        Godlike.tools: true
        Godlike.god: true
        Godlike.power: true
-       Godlike.fly: true
        Godlike.speed: true
    Godlike.sword:
      description: Allows you to use the sword command
