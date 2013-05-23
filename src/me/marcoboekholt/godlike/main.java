@@ -20,8 +20,8 @@ public class main extends JavaPlugin {
         	// Create a config file if the user does not have one already
         	if(getConfig().contains("config.version")) {
         		// Set up config fields
-        		getConfig().set("updates.enabled", true);
-        		getConfig().set("config.version", 1);
+        		getConfig().set("updates.enabled", Boolean.valueOf(true));
+        		getConfig().set("config.version", Integer.valueOf(1));
         		
         		// Notify the user
         		getLogger().info("Created a new config file. You might want to edit it to fit to your needs.");
