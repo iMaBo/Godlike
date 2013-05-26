@@ -35,7 +35,7 @@ permissions:
        Godlike.armour: true
        Godlike.bow: true
        Godlike.tools: true
-       Godlike.god: true
+       Godlike.apple: true
        Godlike.power: true
        Godlike.speed: true
    Godlike.sword:
@@ -50,7 +50,7 @@ permissions:
    Godlike.tools:
      description: Allows you to use the tools command
      default: op
-   Godlike.god:
+   Godlike.apple:
      description: Allows you to get the golden apple effects
      default: op
    Godlike.power:
