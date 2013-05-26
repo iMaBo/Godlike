@@ -18,7 +18,7 @@ public class main extends JavaPlugin {
     
         public void onEnable(){
         	// Create a config file if the user does not have one already
-        	if(getConfig().contains("config.version")) {
+        	if(!getConfig().contains("config.version")) {
         		// Set up config fields
         		getConfig().set("updates.enabled", Boolean.valueOf(true));
         		getConfig().set("config.version", Integer.valueOf(1));
@@ -41,7 +41,72 @@ public class main extends JavaPlugin {
        
         public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args){
                 Player player = (Player)sender;
-                if(cmd.getName().equalsIgnoreCase("Sword")){
+                if(!(sender instanceof Player)){
+                	sender.sendMessage("This command must be run by a player!");
+                	return true;
+                }
+                if(cmd.getName().equalsIgnoreCase("God")){
+                	if(args.length == 0) {
+                		sender.sendMessage(ChatColor.RED + "Godlike version 2.1");
+                		sender.sendMessage(ChatColor.GOLD + "/God <Sword|Armour|Tools|Apple|Power|Speed|info>");
+                		return true;
+                	}
+                	else if(args[0].equalsIgnoreCase("info")){
+                		player.sendMessage("Godlike information!");
+                		player.sendMessage(ChatColor.GRAY + "You can:");
+                		
+                		if(!player.hasPermission("Godlike.sword")) {
+                			player.sendMessage(ChatColor.GOLD + "Spawn a God Sword - " + ChatColor.RED + "NO");
+                		}
+                		else {
+                			player.sendMessage(ChatColor.GOLD + "Spawn a God Sword - " + ChatColor.GREEN + "YES");
+                		}
+                		
+                		if(!player.hasPermission("Godlike.armour")) {
+                			player.sendMessage(ChatColor.GOLD + "Spawn a God Sword - " + ChatColor.RED + "NO");
+                		}
+                		else {
+                			player.sendMessage(ChatColor.GOLD + "Spawn a God Sword - " + ChatColor.GREEN + "YES");
+                		}
+                		
+                		if(!player.hasPermission("Godlike.bow")) {
+                			player.sendMessage(ChatColor.GOLD + "Spawn a God Sword - " + ChatColor.RED + "NO");
+                		}
+                		else {
+                			player.sendMessage(ChatColor.GOLD + "Spawn a God Sword - " + ChatColor.GREEN + "YES");
+                		}
+                		
+                		if(!player.hasPermission("Godlike.tools")) {
+                			player.sendMessage(ChatColor.GOLD + "Spawn a God Sword - " + ChatColor.RED + "NO");
+                		}
+                		else {
+                			player.sendMessage(ChatColor.GOLD + "Spawn a God Sword - " + ChatColor.GREEN + "YES");
+                		}
+                		
+                		if(!player.hasPermission("Godlike.apple")) {
+                			player.sendMessage(ChatColor.GOLD + "Spawn a God Sword - " + ChatColor.RED + "NO");
+                		}
+                		else {
+                			player.sendMessage(ChatColor.GOLD + "Spawn a God Sword - " + ChatColor.GREEN + "YES");
+                		}
+                		
+                		if(!player.hasPermission("Godlike.power")) {
+                			player.sendMessage(ChatColor.GOLD + "Spawn a God Sword - " + ChatColor.RED + "NO");
+                		}
+                		else {
+                			player.sendMessage(ChatColor.GOLD + "Spawn a God Sword - " + ChatColor.GREEN + "YES");
+                		}
+                		
+                		if(!player.hasPermission("Godlike.speed")) {
+                			player.sendMessage(ChatColor.GOLD + "Spawn a God Sword - " + ChatColor.RED + "NO");
+                		}
+                		else {
+                			player.sendMessage(ChatColor.GOLD + "Spawn a God Sword - " + ChatColor.GREEN + "YES");
+                		}
+
+
+                	}
+                	else if(args[0].equalsIgnoreCase("Sword")){
                 	ItemStack sword = new ItemStack(Material.DIAMOND_SWORD, 1);            
                 	sword.addEnchantment(Enchantment.KNOCKBACK, 2);
                 	sword.addEnchantment(Enchantment.DAMAGE_ALL, 5);
@@ -50,7 +115,7 @@ public class main extends JavaPlugin {
                 	pl.addItem(sword);
                     player.sendMessage(ChatColor.DARK_RED + ("*~*") + ChatColor.GREEN + (" You've got a sword!"));
                 }
-                else if(cmd.getName().equalsIgnoreCase("Bow")){
+                else if(args[0].equalsIgnoreCase("Bow")){
                     ItemStack bow = new ItemStack(Material.BOW, 1);
                     ItemStack arrow = new ItemStack(Material.ARROW, 64);
                     bow.addEnchantment(Enchantment.ARROW_DAMAGE, 5);
@@ -60,9 +125,9 @@ public class main extends JavaPlugin {
                     PlayerInventory pl = player.getInventory();
                     pl.addItem(bow);
                     pl.addItem(arrow);
-                    player.sendMessage(ChatColor.DARK_RED + ("*~*") + ChatColor.GREEN + (" You've got a bow and sword!"));
+                    player.sendMessage(ChatColor.DARK_RED + ("*~*") + ChatColor.GREEN + (" You've got a bow and arrows!"));
                 }
-                else if(cmd.getName().equalsIgnoreCase("Armour")){
+                else if(args[0].equalsIgnoreCase("Armour")){
                     ItemStack helmet = new ItemStack(Material.DIAMOND_HELMET, 1);
                     helmet.addEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL, 4);
                     helmet.addEnchantment(Enchantment.PROTECTION_FIRE, 4);
@@ -101,7 +166,7 @@ public class main extends JavaPlugin {
                     pl.addItem(boots);
                     player.sendMessage(ChatColor.DARK_RED + ("*~*") + ChatColor.GREEN + (" You've got the armour!"));
                 }
-                else if(cmd.getName().equalsIgnoreCase("Tools")){
+                else if(args[0].equalsIgnoreCase("Tools")){
                 	ItemStack pickaxe = new ItemStack(Material.DIAMOND_PICKAXE, 1);
                 	pickaxe.addEnchantment(Enchantment.DIG_SPEED, 5);
                 	pickaxe.addEnchantment(Enchantment.SILK_TOUCH, 1);
@@ -130,36 +195,26 @@ public class main extends JavaPlugin {
                 	pl.addItem(hoe);
                 	player.sendMessage(ChatColor.DARK_RED + ("*~*") + ChatColor.GREEN + (" You've got the tools!"));
                 }
-                else if(cmd.getName().equalsIgnoreCase("God")){
+                else if(args[0].equalsIgnoreCase("apple")){
                 	player.addPotionEffect(new PotionEffect(PotionEffectType.FIRE_RESISTANCE, 2400, 1));
                 	player.addPotionEffect(new PotionEffect(PotionEffectType.REGENERATION, 2400, 1));
                 	player.addPotionEffect(new PotionEffect(PotionEffectType.DAMAGE_RESISTANCE, 2400, 1));
                 	
                 	player.sendMessage(ChatColor.DARK_RED + ("*~*") + ChatColor.GREEN + (" You now have the golden apple effect for about 2 minutes!"));
                 }
-                else if(cmd.getName().equalsIgnoreCase("power")){
+                else if(args[0].equalsIgnoreCase("power")){
                 	player.addPotionEffect(new PotionEffect(PotionEffectType.DAMAGE_RESISTANCE, 2400, 1));
                 	player.addPotionEffect(new PotionEffect(PotionEffectType.INCREASE_DAMAGE, 2400, 1));
                 	
                 	player.sendMessage(ChatColor.DARK_RED + ("*~*") + ChatColor.GREEN + (" You now have defence and strength effects for about 2 minutes!"));
                 }
-                else if(cmd.getName().equalsIgnoreCase("fly")){
-                	if(player.getAllowFlight()) {
-                		player.setFlying(false);
-                		player.setAllowFlight(false);
-                		player.sendMessage(ChatColor.DARK_RED + ("*~*") + ChatColor.GREEN + (" Fly powers disabled!"));
-                	} else {
-                		player.setAllowFlight(true);
-                		player.setFlySpeed(0.5F);
-                		player.sendMessage(ChatColor.DARK_RED + ("*~*") + ChatColor.GREEN + (" Fly powers enabled!"));
-                	}
-                }
-                else if(cmd.getName().equalsIgnoreCase("speed")){
+                else if(args[0].equalsIgnoreCase("speed")){
                 	player.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 2400, 1));
                 	
                 	player.sendMessage(ChatColor.DARK_RED + ("*~*") + ChatColor.GREEN + (" You now have a speed potion effect for about 2 minutes!"));
                 }
                 return false;
-               
+                }
+				return false;
         }
 }
