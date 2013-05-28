@@ -1,5 +1,5 @@
 package me.marcoboekholt.godlike;
- 
+
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.command.Command;
@@ -11,269 +11,329 @@ import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
- 
+
 public class main extends JavaPlugin {
-	
-    protected UpdateChecker updateChecker;   
-    
-        public void onEnable(){
-        	// Create a config file if the user does not have one already
-        	if(!getConfig().contains("config.version")) {
-        		// Set up config fields
-        		getConfig().set("updates.enabled", Boolean.valueOf(true));
-        		getConfig().set("config.version", Integer.valueOf(1));
-        		
-        		// Notify the user
-        		getLogger().info("Created a new config file. You might want to edit it to fit to your needs.");
-            	
-            	// Save configuration
-            	this.saveConfig();
-        	}
-        	
-        	if(getConfig().getBoolean("updates.enabled", true)) {
-	        	// Check for updates
-	        	UpdateChecker.updateNeeded(this);
-        	}
-        }
-       
-        public void onDisable(){
-        }
-       
-        public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args){
-                Player player = (Player)sender;
-                if(cmd.getName().equalsIgnoreCase("God")){
-                	if(args.length == 0) {
-                		sender.sendMessage(ChatColor.RED + "Godlike version 2.1");
-                		sender.sendMessage(ChatColor.GOLD + "/God <Sword|Armour|Tools|Apple|Power|Speed|info>");
-                		return true;
-                	}
-                	else if(args[0].equalsIgnoreCase("info")){
-                		player.sendMessage("Godlike information!");
-                		player.sendMessage(ChatColor.GRAY + "You can:");
-                		
-                		if(!player.hasPermission("Godlike.sword")) {
-                			player.sendMessage(ChatColor.GOLD + "Spawn a God Sword - " + ChatColor.RED + "" + ChatColor.BOLD + "NO");
-                		}
-                		else {
-                			player.sendMessage(ChatColor.GOLD + "Spawn a God Sword - " + ChatColor.GREEN + "YES");
-                		}
-                		
-                		if(!player.hasPermission("Godlike.armour")) {
-                			player.sendMessage(ChatColor.GOLD + "Spawn God Armour - " + ChatColor.RED + "" + ChatColor.BOLD + "NO");
-                		}
-                		else {
-                			player.sendMessage(ChatColor.GOLD + "Spawn God Armour - " + ChatColor.GREEN + "YES");
-                		}
-                		
-                		if(!player.hasPermission("Godlike.bow")) {
-                			player.sendMessage(ChatColor.GOLD + "Spawn a God Bow - " + ChatColor.RED + "" + ChatColor.BOLD + "NO");
-                		}
-                		else {
-                			player.sendMessage(ChatColor.GOLD + "Spawn a God Bow - " + ChatColor.GREEN + "YES");
-                		}
-                		
-                		if(!player.hasPermission("Godlike.tools")) {
-                			player.sendMessage(ChatColor.GOLD + "Spawn God Tools - " + ChatColor.RED + "" + ChatColor.BOLD + "NO");
-                		}
-                		else {
-                			player.sendMessage(ChatColor.GOLD + "Spawn God Tools - " + ChatColor.GREEN + "YES");
-                		}
-                		
-                		if(!player.hasPermission("Godlike.apple")) {
-                			player.sendMessage(ChatColor.GOLD + "Get a golden apple effect - " + ChatColor.RED + "" + ChatColor.BOLD + "NO");
-                		}
-                		else {
-                			player.sendMessage(ChatColor.GOLD + "Get a golden apple effect - " + ChatColor.GREEN + "YES");
-                		}
-                		
-                		if(!player.hasPermission("Godlike.power")) {
-                			player.sendMessage(ChatColor.GOLD + "Get defence and strength effects - " + ChatColor.RED + "" + ChatColor.BOLD + "NO");
-                		}
-                		else {
-                			player.sendMessage(ChatColor.GOLD + "Get defence and strength effects - " + ChatColor.GREEN + "YES");
-                		}
-                		
-                		if(!player.hasPermission("Godlike.speed")) {
-                			player.sendMessage(ChatColor.GOLD + "Get speed potion effect - " + ChatColor.RED + "" + ChatColor.BOLD + "NO");
-                		}
-                		else {
-                			player.sendMessage(ChatColor.GOLD + "Get speed potion effect - " + ChatColor.GREEN + "YES");
-                		}
 
+	protected UpdateChecker updateChecker;
 
-                	}
-                	else if(args[0].equalsIgnoreCase("Sword")){
-                		if (sender.isOp()){
-                			if ((sender instanceof Player)){
-                   	ItemStack sword = new ItemStack(Material.DIAMOND_SWORD, 1);            
-                	sword.addEnchantment(Enchantment.KNOCKBACK, 2);
-                	sword.addEnchantment(Enchantment.DAMAGE_ALL, 5);
-                	sword.addEnchantment(Enchantment.FIRE_ASPECT, 2);
-                	PlayerInventory pl = player.getInventory();
-                	pl.addItem(sword);
-                    player.sendMessage(ChatColor.DARK_RED + ("*~*") + ChatColor.GREEN + (" You've got a sword!"));
-                			} else {
-                		           sender.sendMessage(ChatColor.RED + 
-                		             "You must be a player to do this!");
-                		         }
-                		       }
-                		       else { ((Player)sender).sendMessage(ChatColor.DARK_RED + "You do not have the permission to use this command.");
-                		     } 
-                	}
-                else if(args[0].equalsIgnoreCase("Bow")){
-                	if (sender.isOp()){
-            			if ((sender instanceof Player)){
-                    ItemStack bow = new ItemStack(Material.BOW, 1);
-                    ItemStack arrow = new ItemStack(Material.ARROW, 64);
-                    bow.addEnchantment(Enchantment.ARROW_DAMAGE, 5);
-                    bow.addEnchantment(Enchantment.ARROW_INFINITE, 1);
-                    bow.addEnchantment(Enchantment.ARROW_FIRE, 1);
-                    bow.addEnchantment(Enchantment.ARROW_KNOCKBACK, 2);
-                    PlayerInventory pl = player.getInventory();
-                    pl.addItem(bow);
-                    pl.addItem(arrow);
-                    player.sendMessage(ChatColor.DARK_RED + ("*~*") + ChatColor.GREEN + (" You've got a bow and arrows!"));
-            			} else {
-         		           sender.sendMessage(ChatColor.RED + 
-         		             "You must be a player to do this!");
-         		         }
-         		       }
-         		       else { ((Player)sender).sendMessage(ChatColor.DARK_RED + "You do not have the permission to use this command.");
-         		     } 
-         	}
-                else if(args[0].equalsIgnoreCase("Armour")){
-                	if (sender.isOp()){
-            			if ((sender instanceof Player)){
-                    ItemStack helmet = new ItemStack(Material.DIAMOND_HELMET, 1);
-                    helmet.addEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL, 4);
-                    helmet.addEnchantment(Enchantment.PROTECTION_FIRE, 4);
-                    helmet.addEnchantment(Enchantment.PROTECTION_EXPLOSIONS, 4);
-                    helmet.addEnchantment(Enchantment.PROTECTION_PROJECTILE, 4);
-                    helmet.addEnchantment(Enchantment.THORNS, 3);
-                    helmet.addEnchantment(Enchantment.OXYGEN, 3);
-                    helmet.addEnchantment(Enchantment.WATER_WORKER, 1);
-                       
-                    ItemStack body = new ItemStack(Material.DIAMOND_CHESTPLATE, 1);
-                    body.addEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL, 4);
-                    body.addEnchantment(Enchantment.PROTECTION_FIRE, 4);
-                    body.addEnchantment(Enchantment.PROTECTION_EXPLOSIONS, 4);
-                    body.addEnchantment(Enchantment.PROTECTION_PROJECTILE, 4);
-                    body.addEnchantment(Enchantment.THORNS, 3);
-                      
-                    ItemStack legs = new ItemStack(Material.DIAMOND_LEGGINGS, 1);
-                    legs.addEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL, 4);
-                    legs.addEnchantment(Enchantment.PROTECTION_FIRE, 4);
-                    legs.addEnchantment(Enchantment.PROTECTION_EXPLOSIONS, 4);
-                    legs.addEnchantment(Enchantment.PROTECTION_PROJECTILE, 4);
-                    legs.addEnchantment(Enchantment.THORNS, 3);
-                       
-                    ItemStack boots = new ItemStack(Material.DIAMOND_BOOTS, 1);
-                    boots.addEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL, 4);
-                    boots.addEnchantment(Enchantment.PROTECTION_FIRE, 4);
-                    boots.addEnchantment(Enchantment.PROTECTION_EXPLOSIONS, 4);
-                    boots.addEnchantment(Enchantment.PROTECTION_PROJECTILE, 4);
-                    boots.addEnchantment(Enchantment.THORNS, 3);
-                    boots.addEnchantment(Enchantment.PROTECTION_FALL, 4);
- 
-                    PlayerInventory pl = player.getInventory();
-                    pl.addItem(helmet);
-                    pl.addItem(body);
-                    pl.addItem(legs);
-                    pl.addItem(boots);
-                    player.sendMessage(ChatColor.DARK_RED + ("*~*") + ChatColor.GREEN + (" You've got the armour!"));
-            			} else {
-         		           sender.sendMessage(ChatColor.RED + 
-         		             "You must be a player to do this!");
-         		         }
-         		       }
-         		       else { ((Player)sender).sendMessage(ChatColor.DARK_RED + "You do not have the permission to use this command.");
-         		     } 
-         	}
-                else if(args[0].equalsIgnoreCase("Tools")){
-                	if (sender.isOp()){
-            			if ((sender instanceof Player)){
-                	ItemStack pickaxe = new ItemStack(Material.DIAMOND_PICKAXE, 1);
-                	pickaxe.addEnchantment(Enchantment.DIG_SPEED, 5);
-                	pickaxe.addEnchantment(Enchantment.SILK_TOUCH, 1);
-                	pickaxe.addEnchantment(Enchantment.DURABILITY, 3);
-                	pickaxe.addEnchantment(Enchantment.LOOT_BONUS_BLOCKS, 3);
-                	
-                	ItemStack axe = new ItemStack(Material.DIAMOND_AXE, 1);
-                	axe.addEnchantment(Enchantment.DIG_SPEED, 5);
-                	axe.addEnchantment(Enchantment.SILK_TOUCH, 1);
-                	axe.addEnchantment(Enchantment.DURABILITY, 3);
-                	pickaxe.addEnchantment(Enchantment.LOOT_BONUS_BLOCKS, 3);
-                	
-                	ItemStack spade = new ItemStack(Material.DIAMOND_SPADE, 1);
-                	spade.addEnchantment(Enchantment.DIG_SPEED, 5);
-                	spade.addEnchantment(Enchantment.SILK_TOUCH, 1);
-                	spade.addEnchantment(Enchantment.DURABILITY, 3);
-                	pickaxe.addEnchantment(Enchantment.LOOT_BONUS_BLOCKS, 3);
-                	
-                	ItemStack hoe = new ItemStack(Material.DIAMOND_HOE, 1);
-                	hoe.addEnchantment(Enchantment.DURABILITY, 3);
-                	
-                	PlayerInventory pl = player.getInventory();
-                	pl.addItem(pickaxe);
-                	pl.addItem(axe);
-                	pl.addItem(spade);
-                	pl.addItem(hoe);
-                	player.sendMessage(ChatColor.DARK_RED + ("*~*") + ChatColor.GREEN + (" You've got the tools!"));
-            			} else {
-         		           sender.sendMessage(ChatColor.RED + 
-         		             "You must be a player to do this!");
-         		         }
-         		       }
-         		       else { ((Player)sender).sendMessage(ChatColor.DARK_RED + "You do not have the permission to use this command.");
-         		     } 
-         	}
-                else if(args[0].equalsIgnoreCase("apple")){
-                	if (sender.isOp()){
-            			if ((sender instanceof Player)){
-                   	player.addPotionEffect(new PotionEffect(PotionEffectType.FIRE_RESISTANCE, 2400, 1));
-                	player.addPotionEffect(new PotionEffect(PotionEffectType.REGENERATION, 2400, 1));
-                	player.addPotionEffect(new PotionEffect(PotionEffectType.DAMAGE_RESISTANCE, 2400, 1));
-                	
-                	player.sendMessage(ChatColor.DARK_RED + ("*~*") + ChatColor.GREEN + (" You now have the golden apple effect for about 2 minutes!"));
-            			} else {
-         		           sender.sendMessage(ChatColor.RED + 
-         		             "You must be a player to do this!");
-         		         }
-         		       }
-         		       else { ((Player)sender).sendMessage(ChatColor.DARK_RED + "You do not have the permission to use this command.");
-         		     } 
-         	}
-                else if(args[0].equalsIgnoreCase("power")){
-                	if (sender.isOp()){
-            			if ((sender instanceof Player)){
-                	player.addPotionEffect(new PotionEffect(PotionEffectType.DAMAGE_RESISTANCE, 2400, 1));
-                	player.addPotionEffect(new PotionEffect(PotionEffectType.INCREASE_DAMAGE, 2400, 1));
-                	
-                	player.sendMessage(ChatColor.DARK_RED + ("*~*") + ChatColor.GREEN + (" You now have defence and strength effects for about 2 minutes!"));
-            			} else {
-         		           sender.sendMessage(ChatColor.RED + 
-         		             "You must be a player to do this!");
-         		         }
-         		       }
-         		       else { ((Player)sender).sendMessage(ChatColor.DARK_RED + "You do not have the permission to use this command.");
-         		     } 
-         	}
-                else if(args[0].equalsIgnoreCase("speed")){
-                	if (sender.isOp()){
-            			if ((sender instanceof Player)){
-                	player.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 2400, 1));
-                	
-                	player.sendMessage(ChatColor.DARK_RED + ("*~*") + ChatColor.GREEN + (" You now have a speed potion effect for about 2 minutes!"));
-            			} else {
-         		           sender.sendMessage(ChatColor.RED + 
-         		             "You must be a player to do this!");
-         		         }
-         		       }
-         		       else { ((Player)sender).sendMessage(ChatColor.DARK_RED + "You do not have the permission to use this command.");
-         		     } 
-         	}
-                return false;
-                }
-				return false;
-        }
+	public void onEnable() {
+		// Create a config file if the user does not have one already
+		if (!getConfig().contains("config.version")) {
+			// Set up config fields
+			getConfig().set("updates.enabled", Boolean.valueOf(true));
+			getConfig().set("config.version", Integer.valueOf(1));
+
+			// Notify the user
+			getLogger()
+					.info("Created a new config file. You might want to edit it to fit to your needs.");
+
+			// Save configuration
+			this.saveConfig();
+		}
+
+		if (getConfig().getBoolean("updates.enabled", true)) {
+			// Check for updates
+			UpdateChecker.updateNeeded(this);
+		}
+	}
+
+	public void onDisable() {
+	}
+
+	public boolean onCommand(CommandSender sender, Command cmd, String label,
+			String[] args) {
+		Player player = (Player) sender;
+		if (cmd.getName().equalsIgnoreCase("God")) {
+			if (args.length == 0) {
+				sender.sendMessage(ChatColor.RED + "Godlike version 2.1");
+				sender.sendMessage(ChatColor.GOLD
+						+ "/God <Sword|Armour|Tools|Apple|Power|Speed|info>");
+				return true;
+			} else if (args[0].equalsIgnoreCase("info")) {
+				player.sendMessage("Godlike information!");
+				player.sendMessage(ChatColor.GRAY + "You can:");
+
+				if (!player.hasPermission("Godlike.sword")) {
+					player.sendMessage(ChatColor.GOLD + "Spawn a God Sword - "
+							+ ChatColor.RED + "" + ChatColor.BOLD + "NO");
+				} else {
+					player.sendMessage(ChatColor.GOLD + "Spawn a God Sword - "
+							+ ChatColor.GREEN + "YES");
+				}
+
+				if (!player.hasPermission("Godlike.armour")) {
+					player.sendMessage(ChatColor.GOLD + "Spawn God Armour - "
+							+ ChatColor.RED + "" + ChatColor.BOLD + "NO");
+				} else {
+					player.sendMessage(ChatColor.GOLD + "Spawn God Armour - "
+							+ ChatColor.GREEN + "YES");
+				}
+
+				if (!player.hasPermission("Godlike.bow")) {
+					player.sendMessage(ChatColor.GOLD + "Spawn a God Bow - "
+							+ ChatColor.RED + "" + ChatColor.BOLD + "NO");
+				} else {
+					player.sendMessage(ChatColor.GOLD + "Spawn a God Bow - "
+							+ ChatColor.GREEN + "YES");
+				}
+
+				if (!player.hasPermission("Godlike.tools")) {
+					player.sendMessage(ChatColor.GOLD + "Spawn God Tools - "
+							+ ChatColor.RED + "" + ChatColor.BOLD + "NO");
+				} else {
+					player.sendMessage(ChatColor.GOLD + "Spawn God Tools - "
+							+ ChatColor.GREEN + "YES");
+				}
+
+				if (!player.hasPermission("Godlike.apple")) {
+					player.sendMessage(ChatColor.GOLD
+							+ "Get a golden apple effect - " + ChatColor.RED
+							+ "" + ChatColor.BOLD + "NO");
+				} else {
+					player.sendMessage(ChatColor.GOLD
+							+ "Get a golden apple effect - " + ChatColor.GREEN
+							+ "YES");
+				}
+
+				if (!player.hasPermission("Godlike.power")) {
+					player.sendMessage(ChatColor.GOLD
+							+ "Get defence and strength effects - "
+							+ ChatColor.RED + "" + ChatColor.BOLD + "NO");
+				} else {
+					player.sendMessage(ChatColor.GOLD
+							+ "Get defence and strength effects - "
+							+ ChatColor.GREEN + "YES");
+				}
+
+				if (!player.hasPermission("Godlike.speed")) {
+					player.sendMessage(ChatColor.GOLD
+							+ "Get speed potion effect - " + ChatColor.RED + ""
+							+ ChatColor.BOLD + "NO");
+				} else {
+					player.sendMessage(ChatColor.GOLD
+							+ "Get speed potion effect - " + ChatColor.GREEN
+							+ "YES");
+				}
+
+			} else if (args[0].equalsIgnoreCase("Sword")) {
+				if (sender.isOp()) {
+					if ((sender instanceof Player)) {
+						ItemStack sword = new ItemStack(Material.DIAMOND_SWORD,
+								1);
+						sword.addEnchantment(Enchantment.KNOCKBACK, 2);
+						sword.addEnchantment(Enchantment.DAMAGE_ALL, 5);
+						sword.addEnchantment(Enchantment.FIRE_ASPECT, 2);
+						PlayerInventory pl = player.getInventory();
+						pl.addItem(sword);
+						player.sendMessage(ChatColor.DARK_RED + ("*~*")
+								+ ChatColor.GREEN + (" You've got a sword!"));
+					} else {
+						sender.sendMessage(ChatColor.RED
+								+ "You must be a player to do this!");
+					}
+				} else {
+					((Player) sender)
+							.sendMessage(ChatColor.DARK_RED
+									+ "You do not have the permission to use this command.");
+				}
+			} else if (args[0].equalsIgnoreCase("Bow")) {
+				if (sender.isOp()) {
+					if ((sender instanceof Player)) {
+						ItemStack bow = new ItemStack(Material.BOW, 1);
+						ItemStack arrow = new ItemStack(Material.ARROW, 64);
+						bow.addEnchantment(Enchantment.ARROW_DAMAGE, 5);
+						bow.addEnchantment(Enchantment.ARROW_INFINITE, 1);
+						bow.addEnchantment(Enchantment.ARROW_FIRE, 1);
+						bow.addEnchantment(Enchantment.ARROW_KNOCKBACK, 2);
+						PlayerInventory pl = player.getInventory();
+						pl.addItem(bow);
+						pl.addItem(arrow);
+						player.sendMessage(ChatColor.DARK_RED + ("*~*")
+								+ ChatColor.GREEN
+								+ (" You've got a bow and arrows!"));
+					} else {
+						sender.sendMessage(ChatColor.RED
+								+ "You must be a player to do this!");
+					}
+				} else {
+					((Player) sender)
+							.sendMessage(ChatColor.DARK_RED
+									+ "You do not have the permission to use this command.");
+				}
+			} else if (args[0].equalsIgnoreCase("Armour")) {
+				if (sender.isOp()) {
+					if ((sender instanceof Player)) {
+						ItemStack helmet = new ItemStack(
+								Material.DIAMOND_HELMET, 1);
+						helmet.addEnchantment(
+								Enchantment.PROTECTION_ENVIRONMENTAL, 4);
+						helmet.addEnchantment(Enchantment.PROTECTION_FIRE, 4);
+						helmet.addEnchantment(
+								Enchantment.PROTECTION_EXPLOSIONS, 4);
+						helmet.addEnchantment(
+								Enchantment.PROTECTION_PROJECTILE, 4);
+						helmet.addEnchantment(Enchantment.THORNS, 3);
+						helmet.addEnchantment(Enchantment.OXYGEN, 3);
+						helmet.addEnchantment(Enchantment.WATER_WORKER, 1);
+
+						ItemStack body = new ItemStack(
+								Material.DIAMOND_CHESTPLATE, 1);
+						body.addEnchantment(
+								Enchantment.PROTECTION_ENVIRONMENTAL, 4);
+						body.addEnchantment(Enchantment.PROTECTION_FIRE, 4);
+						body.addEnchantment(Enchantment.PROTECTION_EXPLOSIONS,
+								4);
+						body.addEnchantment(Enchantment.PROTECTION_PROJECTILE,
+								4);
+						body.addEnchantment(Enchantment.THORNS, 3);
+
+						ItemStack legs = new ItemStack(
+								Material.DIAMOND_LEGGINGS, 1);
+						legs.addEnchantment(
+								Enchantment.PROTECTION_ENVIRONMENTAL, 4);
+						legs.addEnchantment(Enchantment.PROTECTION_FIRE, 4);
+						legs.addEnchantment(Enchantment.PROTECTION_EXPLOSIONS,
+								4);
+						legs.addEnchantment(Enchantment.PROTECTION_PROJECTILE,
+								4);
+						legs.addEnchantment(Enchantment.THORNS, 3);
+
+						ItemStack boots = new ItemStack(Material.DIAMOND_BOOTS,
+								1);
+						boots.addEnchantment(
+								Enchantment.PROTECTION_ENVIRONMENTAL, 4);
+						boots.addEnchantment(Enchantment.PROTECTION_FIRE, 4);
+						boots.addEnchantment(Enchantment.PROTECTION_EXPLOSIONS,
+								4);
+						boots.addEnchantment(Enchantment.PROTECTION_PROJECTILE,
+								4);
+						boots.addEnchantment(Enchantment.THORNS, 3);
+						boots.addEnchantment(Enchantment.PROTECTION_FALL, 4);
+
+						PlayerInventory pl = player.getInventory();
+						pl.addItem(helmet);
+						pl.addItem(body);
+						pl.addItem(legs);
+						pl.addItem(boots);
+						player.sendMessage(ChatColor.DARK_RED + ("*~*")
+								+ ChatColor.GREEN + (" You've got the armour!"));
+					} else {
+						sender.sendMessage(ChatColor.RED
+								+ "You must be a player to do this!");
+					}
+				} else {
+					((Player) sender)
+							.sendMessage(ChatColor.DARK_RED
+									+ "You do not have the permission to use this command.");
+				}
+			} else if (args[0].equalsIgnoreCase("Tools")) {
+				if (sender.isOp()) {
+					if ((sender instanceof Player)) {
+						ItemStack pickaxe = new ItemStack(
+								Material.DIAMOND_PICKAXE, 1);
+						pickaxe.addEnchantment(Enchantment.DIG_SPEED, 5);
+						pickaxe.addEnchantment(Enchantment.SILK_TOUCH, 1);
+						pickaxe.addEnchantment(Enchantment.DURABILITY, 3);
+						pickaxe.addEnchantment(Enchantment.LOOT_BONUS_BLOCKS, 3);
+
+						ItemStack axe = new ItemStack(Material.DIAMOND_AXE, 1);
+						axe.addEnchantment(Enchantment.DIG_SPEED, 5);
+						axe.addEnchantment(Enchantment.SILK_TOUCH, 1);
+						axe.addEnchantment(Enchantment.DURABILITY, 3);
+						pickaxe.addEnchantment(Enchantment.LOOT_BONUS_BLOCKS, 3);
+
+						ItemStack spade = new ItemStack(Material.DIAMOND_SPADE,
+								1);
+						spade.addEnchantment(Enchantment.DIG_SPEED, 5);
+						spade.addEnchantment(Enchantment.SILK_TOUCH, 1);
+						spade.addEnchantment(Enchantment.DURABILITY, 3);
+						pickaxe.addEnchantment(Enchantment.LOOT_BONUS_BLOCKS, 3);
+
+						ItemStack hoe = new ItemStack(Material.DIAMOND_HOE, 1);
+						hoe.addEnchantment(Enchantment.DURABILITY, 3);
+
+						PlayerInventory pl = player.getInventory();
+						pl.addItem(pickaxe);
+						pl.addItem(axe);
+						pl.addItem(spade);
+						pl.addItem(hoe);
+						player.sendMessage(ChatColor.DARK_RED + ("*~*")
+								+ ChatColor.GREEN + (" You've got the tools!"));
+					} else {
+						sender.sendMessage(ChatColor.RED
+								+ "You must be a player to do this!");
+					}
+				} else {
+					((Player) sender)
+							.sendMessage(ChatColor.DARK_RED
+									+ "You do not have the permission to use this command.");
+				}
+			} else if (args[0].equalsIgnoreCase("apple")) {
+				if (sender.isOp()) {
+					if ((sender instanceof Player)) {
+						player.addPotionEffect(new PotionEffect(
+								PotionEffectType.FIRE_RESISTANCE, 2400, 1));
+						player.addPotionEffect(new PotionEffect(
+								PotionEffectType.REGENERATION, 2400, 1));
+						player.addPotionEffect(new PotionEffect(
+								PotionEffectType.DAMAGE_RESISTANCE, 2400, 1));
+
+						player.sendMessage(ChatColor.DARK_RED
+								+ ("*~*")
+								+ ChatColor.GREEN
+								+ (" You now have the golden apple effect for about 2 minutes!"));
+					} else {
+						sender.sendMessage(ChatColor.RED
+								+ "You must be a player to do this!");
+					}
+				} else {
+					((Player) sender)
+							.sendMessage(ChatColor.DARK_RED
+									+ "You do not have the permission to use this command.");
+				}
+			} else if (args[0].equalsIgnoreCase("power")) {
+				if (sender.isOp()) {
+					if ((sender instanceof Player)) {
+						player.addPotionEffect(new PotionEffect(
+								PotionEffectType.DAMAGE_RESISTANCE, 2400, 1));
+						player.addPotionEffect(new PotionEffect(
+								PotionEffectType.INCREASE_DAMAGE, 2400, 1));
+
+						player.sendMessage(ChatColor.DARK_RED
+								+ ("*~*")
+								+ ChatColor.GREEN
+								+ (" You now have defence and strength effects for about 2 minutes!"));
+					} else {
+						sender.sendMessage(ChatColor.RED
+								+ "You must be a player to do this!");
+					}
+				} else {
+					((Player) sender)
+							.sendMessage(ChatColor.DARK_RED
+									+ "You do not have the permission to use this command.");
+				}
+			} else if (args[0].equalsIgnoreCase("speed")) {
+				if (sender.isOp()) {
+					if ((sender instanceof Player)) {
+						player.addPotionEffect(new PotionEffect(
+								PotionEffectType.SPEED, 2400, 1));
+
+						player.sendMessage(ChatColor.DARK_RED
+								+ ("*~*")
+								+ ChatColor.GREEN
+								+ (" You now have a speed potion effect for about 2 minutes!"));
+					} else {
+						sender.sendMessage(ChatColor.RED
+								+ "You must be a player to do this!");
+					}
+				} else {
+					((Player) sender)
+							.sendMessage(ChatColor.DARK_RED
+									+ "You do not have the permission to use this command.");
+				}
+			}
+			return false;
+		}
+		return false;
+	}
 }
