@@ -1,35 +1,17 @@
 name: Godlike
 main: me.marcoboekholt.godlike.main
-version: 2.0
+version: 2.1
 author: Marco Boekholt
 description: This plugin will give you the highest possible enchantment on armour and weapons.
 
 commands:
-  Sword:
-    description: Get a sword with all enchantments
-    permissions: Godlike.sword
-  Armour:
-    description: Get armour with all enchantments
-    permissions: Godlike.armour
-  Bow:
-    description: Get bow with all enchantments
-    permissions: Godlike.bow
-  Tools:
-    description: Get tools with all enchantments
-    permissions: Godlike.tools
   God:
-    description: Get the effect you get from eating an apple
-    permissions: Godlike.god
-  power:
-    description: Get defence and strength powers
-    permissions: Godlike.power
-  speed:
-    description: Walk faster than normal
-    permissions: Godlike.speed
+    permissions: Godlike.*
     
 permissions:
    Godlike.*:
      description: Gives you access to all Godlike commands
+     default: op
      children:
        Godlike.sword: true
        Godlike.armour: true
