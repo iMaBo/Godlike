@@ -41,3 +41,6 @@ permissions:
    Godlike.speed:
      description: Allows you to walk faster than normal
      default: op
+   Cooldown.bypass:
+     description: Allows you to bypass the cooldown
+     default: op

@@ -1,5 +1,8 @@
 package me.marcoboekholt.godlike;
 
+import java.util.ArrayList;
+
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.command.Command;
@@ -21,7 +24,10 @@ public class main extends JavaPlugin {
 		if (!getConfig().contains("config.version")) {
 			// Set up config fields
 			getConfig().set("updates.enabled", Boolean.valueOf(true));
-			getConfig().set("config.version", Integer.valueOf(1));
+			getConfig().set("cooldown.speed", Boolean.valueOf(true));
+			getConfig().set("cooldown.apple", Boolean.valueOf(true));
+			getConfig().set("cooldown.power", Boolean.valueOf(true));
+			getConfig().set("config.version", Integer.valueOf(2));
 
 			// Notify the user
 			getLogger()
@@ -40,9 +46,11 @@ public class main extends JavaPlugin {
 	public void onDisable() {
 	}
 
+	ArrayList<Player> cooldown = new ArrayList<Player>();
+
 	public boolean onCommand(CommandSender sender, Command cmd, String label,
 			String[] args) {
-		Player player = (Player) sender;
+		final Player player = (Player) sender;
 		if (cmd.getName().equalsIgnoreCase("God")) {
 			if (args.length == 0) {
 				sender.sendMessage(ChatColor.RED + "Godlike version 2.1");
@@ -271,6 +279,13 @@ public class main extends JavaPlugin {
 			} else if (args[0].equalsIgnoreCase("apple")) {
 				if (sender.isOp()) {
 					if ((sender instanceof Player)) {
+						if (getConfig().getBoolean("cooldown.apple", true)) {
+							if (cooldown.contains(player)) {
+								player.sendMessage(ChatColor.RED
+										+ "You have to wait 10 seconds before you can do this again!");
+								return true;
+							}
+						}
 						player.addPotionEffect(new PotionEffect(
 								PotionEffectType.FIRE_RESISTANCE, 2400, 1));
 						player.addPotionEffect(new PotionEffect(
@@ -282,6 +297,13 @@ public class main extends JavaPlugin {
 								+ ("*~*")
 								+ ChatColor.GREEN
 								+ (" You now have the golden apple effect for about 2 minutes!"));
+						cooldown.add(player);
+						Bukkit.getServer().getScheduler()
+								.scheduleSyncDelayedTask(this, new Runnable() {
+									public void run() {
+										cooldown.remove(player);
+									}
+								}, 100);
 					} else {
 						sender.sendMessage(ChatColor.RED
 								+ "You must be a player to do this!");
@@ -294,6 +316,13 @@ public class main extends JavaPlugin {
 			} else if (args[0].equalsIgnoreCase("power")) {
 				if (sender.isOp()) {
 					if ((sender instanceof Player)) {
+						if (getConfig().getBoolean("cooldown.power", true)) {
+							if (cooldown.contains(player)) {
+								player.sendMessage(ChatColor.RED
+										+ "You have to wait 10 seconds before you can do this again!");
+								return true;
+							}
+						}
 						player.addPotionEffect(new PotionEffect(
 								PotionEffectType.DAMAGE_RESISTANCE, 2400, 1));
 						player.addPotionEffect(new PotionEffect(
@@ -303,6 +332,13 @@ public class main extends JavaPlugin {
 								+ ("*~*")
 								+ ChatColor.GREEN
 								+ (" You now have defence and strength effects for about 2 minutes!"));
+						cooldown.add(player);
+						Bukkit.getServer().getScheduler()
+								.scheduleSyncDelayedTask(this, new Runnable() {
+									public void run() {
+										cooldown.remove(player);
+									}
+								}, 100);
 					} else {
 						sender.sendMessage(ChatColor.RED
 								+ "You must be a player to do this!");
@@ -315,6 +351,13 @@ public class main extends JavaPlugin {
 			} else if (args[0].equalsIgnoreCase("speed")) {
 				if (sender.isOp()) {
 					if ((sender instanceof Player)) {
+						if (getConfig().getBoolean("cooldown.speed", true)) {
+							if (cooldown.contains(player)) {
+								player.sendMessage(ChatColor.RED
+										+ "You have to wait 10 seconds before you can do this again!");
+								return true;
+							}
+						}
 						player.addPotionEffect(new PotionEffect(
 								PotionEffectType.SPEED, 2400, 1));
 
@@ -322,6 +365,13 @@ public class main extends JavaPlugin {
 								+ ("*~*")
 								+ ChatColor.GREEN
 								+ (" You now have a speed potion effect for about 2 minutes!"));
+						cooldown.add(player);
+						Bukkit.getServer().getScheduler()
+								.scheduleSyncDelayedTask(this, new Runnable() {
+									public void run() {
+										cooldown.remove(player);
+									}
+								}, 100);
 					} else {
 						sender.sendMessage(ChatColor.RED
 								+ "You must be a player to do this!");
