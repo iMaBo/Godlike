@@ -173,48 +173,33 @@ public class main extends JavaPlugin {
 					if ((sender instanceof Player)) {
 						ItemStack helmet = new ItemStack(
 								Material.DIAMOND_HELMET, 1);
-						helmet.addEnchantment(
-								Enchantment.PROTECTION_ENVIRONMENTAL, 4);
+						helmet.addEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL, 4);
 						helmet.addEnchantment(Enchantment.PROTECTION_FIRE, 4);
-						helmet.addEnchantment(
-								Enchantment.PROTECTION_EXPLOSIONS, 4);
-						helmet.addEnchantment(
-								Enchantment.PROTECTION_PROJECTILE, 4);
+						helmet.addEnchantment(Enchantment.PROTECTION_EXPLOSIONS, 4);
+						helmet.addEnchantment(Enchantment.PROTECTION_PROJECTILE, 4);
 						helmet.addEnchantment(Enchantment.THORNS, 3);
 						helmet.addEnchantment(Enchantment.OXYGEN, 3);
 						helmet.addEnchantment(Enchantment.WATER_WORKER, 1);
 
-						ItemStack body = new ItemStack(
-								Material.DIAMOND_CHESTPLATE, 1);
-						body.addEnchantment(
-								Enchantment.PROTECTION_ENVIRONMENTAL, 4);
+						ItemStack body = new ItemStack(Material.DIAMOND_CHESTPLATE, 1);
+						body.addEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL, 4);
 						body.addEnchantment(Enchantment.PROTECTION_FIRE, 4);
-						body.addEnchantment(Enchantment.PROTECTION_EXPLOSIONS,
-								4);
-						body.addEnchantment(Enchantment.PROTECTION_PROJECTILE,
-								4);
+						body.addEnchantment(Enchantment.PROTECTION_EXPLOSIONS, 4);
+						body.addEnchantment(Enchantment.PROTECTION_PROJECTILE, 4);
 						body.addEnchantment(Enchantment.THORNS, 3);
 
-						ItemStack legs = new ItemStack(
-								Material.DIAMOND_LEGGINGS, 1);
-						legs.addEnchantment(
-								Enchantment.PROTECTION_ENVIRONMENTAL, 4);
+						ItemStack legs = new ItemStack(Material.DIAMOND_LEGGINGS, 1);
+						legs.addEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL, 4);
 						legs.addEnchantment(Enchantment.PROTECTION_FIRE, 4);
-						legs.addEnchantment(Enchantment.PROTECTION_EXPLOSIONS,
-								4);
-						legs.addEnchantment(Enchantment.PROTECTION_PROJECTILE,
-								4);
+						legs.addEnchantment(Enchantment.PROTECTION_EXPLOSIONS, 4);
+						legs.addEnchantment(Enchantment.PROTECTION_PROJECTILE, 4);
 						legs.addEnchantment(Enchantment.THORNS, 3);
 
-						ItemStack boots = new ItemStack(Material.DIAMOND_BOOTS,
-								1);
-						boots.addEnchantment(
-								Enchantment.PROTECTION_ENVIRONMENTAL, 4);
+						ItemStack boots = new ItemStack(Material.DIAMOND_BOOTS, 1);
+						boots.addEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL, 4);
 						boots.addEnchantment(Enchantment.PROTECTION_FIRE, 4);
-						boots.addEnchantment(Enchantment.PROTECTION_EXPLOSIONS,
-								4);
-						boots.addEnchantment(Enchantment.PROTECTION_PROJECTILE,
-								4);
+						boots.addEnchantment(Enchantment.PROTECTION_EXPLOSIONS, 4);
+						boots.addEnchantment(Enchantment.PROTECTION_PROJECTILE, 4);
 						boots.addEnchantment(Enchantment.THORNS, 3);
 						boots.addEnchantment(Enchantment.PROTECTION_FALL, 4);
 
@@ -282,7 +267,7 @@ public class main extends JavaPlugin {
 						if (getConfig().getBoolean("cooldown.apple", true)) {
 							if (cooldown.contains(player)) {
 								player.sendMessage(ChatColor.RED
-										+ "You have to wait 10 seconds before you can do this again!");
+										+ "please wait until your potion effect is done");
 								return true;
 							}
 						}
@@ -303,7 +288,7 @@ public class main extends JavaPlugin {
 									public void run() {
 										cooldown.remove(player);
 									}
-								}, 100);
+								}, 2400);
 					} else {
 						sender.sendMessage(ChatColor.RED
 								+ "You must be a player to do this!");
@@ -319,7 +304,7 @@ public class main extends JavaPlugin {
 						if (getConfig().getBoolean("cooldown.power", true)) {
 							if (cooldown.contains(player)) {
 								player.sendMessage(ChatColor.RED
-										+ "You have to wait 10 seconds before you can do this again!");
+										+ "please wait until your potion effect is done");
 								return true;
 							}
 						}
@@ -338,7 +323,7 @@ public class main extends JavaPlugin {
 									public void run() {
 										cooldown.remove(player);
 									}
-								}, 100);
+								}, 2400);
 					} else {
 						sender.sendMessage(ChatColor.RED
 								+ "You must be a player to do this!");
@@ -354,7 +339,7 @@ public class main extends JavaPlugin {
 						if (getConfig().getBoolean("cooldown.speed", true)) {
 							if (cooldown.contains(player)) {
 								player.sendMessage(ChatColor.RED
-										+ "You have to wait 10 seconds before you can do this again!");
+										+ "please wait until your potion effect is done");
 								return true;
 							}
 						}
@@ -371,7 +356,7 @@ public class main extends JavaPlugin {
 									public void run() {
 										cooldown.remove(player);
 									}
-								}, 100);
+								}, 2400);
 					} else {
 						sender.sendMessage(ChatColor.RED
 								+ "You must be a player to do this!");
