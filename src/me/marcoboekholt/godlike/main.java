@@ -229,7 +229,7 @@ public class main extends JavaPlugin {
 				}
 			} else if (args[0].equalsIgnoreCase("Horse")) {
 				if (args.length == 1) {
-					player.sendMessage(ChatColor.GOLD + "Usage: /God Horse <Iron|Gold|Diamond>");					
+					player.sendMessage(ChatColor.GOLD + "Usage: /God Horse <Iron|Gold|Diamond|Saddle>");					
 				} else if (args[1].equalsIgnoreCase("Iron")) {
 					ItemStack IronHA = new ItemStack(417, 1);
 					
@@ -245,6 +245,11 @@ public class main extends JavaPlugin {
 					
 					PlayerInventory pl = player.getInventory();
 					pl.addItem(DiamondHA);
+				} else if (args[1].equalsIgnoreCase("Saddle")) {
+					ItemStack HorseSL = new ItemStack(Material.SADDLE, 1);
+					
+					PlayerInventory pl = player.getInventory();
+					pl.addItem(HorseSL);
 				}
 				
 				
