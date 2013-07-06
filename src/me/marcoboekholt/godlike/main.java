@@ -1,5 +1,6 @@
 package me.marcoboekholt.godlike;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 import org.bukkit.Bukkit;
@@ -20,6 +21,13 @@ public class main extends JavaPlugin {
 	protected UpdateChecker updateChecker;
 
 	public void onEnable() {
+		
+		try {
+			metrics metrics = new metrics(this); metrics.start();
+			} catch (IOException e) { // Failed to submit the stats :-(
+			System.out.println("Error Submitting stats!");
+			}
+		
 		// Create a config file if the user does not have one already
 		if (!getConfig().contains("config.version")) {
 			// Set up config fields
@@ -55,7 +63,7 @@ public class main extends JavaPlugin {
 			if (args.length == 0) {
 				sender.sendMessage(ChatColor.RED + "Godlike version 2.1");
 				sender.sendMessage(ChatColor.GOLD
-						+ "/God <Sword|Armour|Tools|Apple|Power|Speed|info>");
+						+ "/God <Sword|Armour|Bow|Horse|Tools|Apple|Power|Speed|info>");
 				return true;
 			} else if (args[0].equalsIgnoreCase("info")) {
 				player.sendMessage("Godlike information!");
@@ -219,7 +227,30 @@ public class main extends JavaPlugin {
 							.sendMessage(ChatColor.DARK_RED
 									+ "You do not have the permission to use this command.");
 				}
-			} else if (args[0].equalsIgnoreCase("Tools")) {
+			} else if (args[0].equalsIgnoreCase("Horse")) {
+				if (args.length == 1) {
+					player.sendMessage(ChatColor.GOLD + "Usage: /God Horse <Iron|Gold|Diamond>");					
+				} else if (args[1].equalsIgnoreCase("Iron")) {
+					ItemStack IronHA = new ItemStack(417, 1);
+					
+					PlayerInventory pl = player.getInventory();
+					pl.addItem(IronHA);
+				} else if (args[1].equalsIgnoreCase("Gold")) {
+					ItemStack GoldHA = new ItemStack(418, 1);
+					
+					PlayerInventory pl = player.getInventory();
+					pl.addItem(GoldHA);
+				} else if (args[1].equalsIgnoreCase("Diamond")) {
+					ItemStack DiamondHA = new ItemStack(419, 1);
+					
+					PlayerInventory pl = player.getInventory();
+					pl.addItem(DiamondHA);
+				}
+				
+				
+			}
+			
+			else if (args[0].equalsIgnoreCase("Tools")) {
 				if (sender.isOp()) {
 					if ((sender instanceof Player)) {
 						ItemStack pickaxe = new ItemStack(
