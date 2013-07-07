@@ -132,7 +132,7 @@ public class main extends JavaPlugin {
 				}
 
 			} else if (args[0].equalsIgnoreCase("Sword")) {
-				if (sender.isOp()) {
+				if (sender.isOp() || !player.hasPermission("Godlike.sword")) {
 					if ((sender instanceof Player)) {
 						ItemStack sword = new ItemStack(Material.DIAMOND_SWORD,
 								1);
@@ -153,7 +153,7 @@ public class main extends JavaPlugin {
 									+ "You do not have the permission to use this command.");
 				}
 			} else if (args[0].equalsIgnoreCase("Bow")) {
-				if (sender.isOp()) {
+				if (sender.isOp() || !player.hasPermission("Godlike.bow")) {
 					if ((sender instanceof Player)) {
 						ItemStack bow = new ItemStack(Material.BOW, 1);
 						ItemStack arrow = new ItemStack(Material.ARROW, 64);
@@ -177,7 +177,7 @@ public class main extends JavaPlugin {
 									+ "You do not have the permission to use this command.");
 				}
 			} else if (args[0].equalsIgnoreCase("Armour")) {
-				if (sender.isOp()) {
+				if (sender.isOp() || !player.hasPermission("Godlike.armour")) {
 					if ((sender instanceof Player)) {
 						ItemStack helmet = new ItemStack(
 								Material.DIAMOND_HELMET, 1);
@@ -256,7 +256,7 @@ public class main extends JavaPlugin {
 			}
 			
 			else if (args[0].equalsIgnoreCase("Tools")) {
-				if (sender.isOp()) {
+				if (sender.isOp() || !player.hasPermission("Godlike.tools")) {
 					if ((sender instanceof Player)) {
 						ItemStack pickaxe = new ItemStack(
 								Material.DIAMOND_PICKAXE, 1);
@@ -298,7 +298,7 @@ public class main extends JavaPlugin {
 									+ "You do not have the permission to use this command.");
 				}
 			} else if (args[0].equalsIgnoreCase("apple")) {
-				if (sender.isOp()) {
+				if (sender.isOp() || !player.hasPermission("Godlike.apple")) {
 					if ((sender instanceof Player)) {
 						if (getConfig().getBoolean("cooldown.apple", true)) {
 							if (cooldown.contains(player)) {
@@ -335,7 +335,7 @@ public class main extends JavaPlugin {
 									+ "You do not have the permission to use this command.");
 				}
 			} else if (args[0].equalsIgnoreCase("power")) {
-				if (sender.isOp()) {
+				if (sender.isOp() || !player.hasPermission("Godlike.power")) {
 					if ((sender instanceof Player)) {
 						if (getConfig().getBoolean("cooldown.power", true)) {
 							if (cooldown.contains(player)) {
@@ -370,7 +370,7 @@ public class main extends JavaPlugin {
 									+ "You do not have the permission to use this command.");
 				}
 			} else if (args[0].equalsIgnoreCase("speed")) {
-				if (sender.isOp()) {
+				if (sender.isOp() || !player.hasPermission("Godlike.speed")) {
 					if ((sender instanceof Player)) {
 						if (getConfig().getBoolean("cooldown.speed", true)) {
 							if (cooldown.contains(player)) {
