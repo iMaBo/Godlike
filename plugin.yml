@@ -17,6 +17,7 @@ permissions:
        Godlike.armour: true
        Godlike.bow: true
        Godlike.tools: true
+       Godlike.horse: true
        Godlike.apple: true
        Godlike.power: true
        Godlike.speed: true
@@ -31,6 +32,9 @@ permissions:
      default: op
    Godlike.tools:
      description: Allows you to use the tools command
+     default: op
+   Godlike.horse:
+     description: Allows you to use the horse command to get horse armour and saddle
      default: op
    Godlike.apple:
      description: Allows you to get the golden apple effects

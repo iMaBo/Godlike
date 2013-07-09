@@ -228,6 +228,9 @@ public class main extends JavaPlugin {
 									+ "You do not have the permission to use this command.");
 				}
 			} else if (args[0].equalsIgnoreCase("Horse")) {
+				if(sender.isOp() || !player.hasPermission("Godlike.horse")) {
+					if ((sender instanceof Player)) {
+					
 				if (args.length == 1) {
 					player.sendMessage(ChatColor.GOLD + "Usage: /God Horse <Iron|Gold|Diamond|Saddle>");					
 				} else if (args[1].equalsIgnoreCase("Iron")) {
@@ -250,8 +253,13 @@ public class main extends JavaPlugin {
 					
 					PlayerInventory pl = player.getInventory();
 					pl.addItem(HorseSL);
+					}
+				} else {
+					sender.sendMessage(ChatColor.RED + "You must be a player to do this!");
 				}
-				
+				} else {
+					((Player) sender).sendMessage(ChatColor.DARK_RED + "You do not have the permission to use this command.");
+				}
 				
 			}
 			
