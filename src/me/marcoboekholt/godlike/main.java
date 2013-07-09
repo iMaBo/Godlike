@@ -148,7 +148,7 @@ public class main extends JavaPlugin {
 								+ "You must be a player to do this!");
 					}
 				} else {
-					((Player) sender)
+					sender
 							.sendMessage(ChatColor.DARK_RED
 									+ "You do not have the permission to use this command.");
 				}
@@ -172,7 +172,7 @@ public class main extends JavaPlugin {
 								+ "You must be a player to do this!");
 					}
 				} else {
-					((Player) sender)
+					sender
 							.sendMessage(ChatColor.DARK_RED
 									+ "You do not have the permission to use this command.");
 				}
@@ -223,7 +223,7 @@ public class main extends JavaPlugin {
 								+ "You must be a player to do this!");
 					}
 				} else {
-					((Player) sender)
+					sender
 							.sendMessage(ChatColor.DARK_RED
 									+ "You do not have the permission to use this command.");
 				}
@@ -258,7 +258,7 @@ public class main extends JavaPlugin {
 					sender.sendMessage(ChatColor.RED + "You must be a player to do this!");
 				}
 				} else {
-					((Player) sender).sendMessage(ChatColor.DARK_RED + "You do not have the permission to use this command.");
+					sender.sendMessage(ChatColor.DARK_RED + "You do not have the permission to use this command.");
 				}
 				
 			}
@@ -301,7 +301,7 @@ public class main extends JavaPlugin {
 								+ "You must be a player to do this!");
 					}
 				} else {
-					((Player) sender)
+					sender
 							.sendMessage(ChatColor.DARK_RED
 									+ "You do not have the permission to use this command.");
 				}
@@ -338,7 +338,7 @@ public class main extends JavaPlugin {
 								+ "You must be a player to do this!");
 					}
 				} else {
-					((Player) sender)
+					sender
 							.sendMessage(ChatColor.DARK_RED
 									+ "You do not have the permission to use this command.");
 				}
@@ -373,7 +373,7 @@ public class main extends JavaPlugin {
 								+ "You must be a player to do this!");
 					}
 				} else {
-					((Player) sender)
+					sender
 							.sendMessage(ChatColor.DARK_RED
 									+ "You do not have the permission to use this command.");
 				}
@@ -406,8 +406,7 @@ public class main extends JavaPlugin {
 								+ "You must be a player to do this!");
 					}
 				} else {
-					((Player) sender)
-							.sendMessage(ChatColor.DARK_RED
+					sender.sendMessage(ChatColor.DARK_RED
 									+ "You do not have the permission to use this command.");
 				}
 			}
