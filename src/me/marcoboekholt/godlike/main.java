@@ -21,13 +21,14 @@ public class main extends JavaPlugin {
 	protected UpdateChecker updateChecker;
 
 	public void onEnable() {
-		
+
 		try {
-			metrics metrics = new metrics(this); metrics.start();
-			} catch (IOException e) { // Failed to submit the stats :-(
+			metrics metrics = new metrics(this);
+			metrics.start();
+		} catch (IOException e) { // Failed to submit the stats :-(
 			System.out.println("Error Submitting stats!");
-			}
-		
+		}
+
 		// Create a config file if the user does not have one already
 		if (!getConfig().contains("config.version")) {
 			// Set up config fields
@@ -101,6 +102,16 @@ public class main extends JavaPlugin {
 							+ ChatColor.GREEN + "YES");
 				}
 
+				if (!player.hasPermission("Godlike.horse")) {
+					player.sendMessage(ChatColor.GOLD
+							+ "Spawn horse armour or saddle - " + ChatColor.RED
+							+ "" + ChatColor.BOLD + "NO");
+				} else {
+					player.sendMessage(ChatColor.GOLD
+							+ "Spawn horse armour or saddle - "
+							+ ChatColor.GREEN + "YES");
+				}
+
 				if (!player.hasPermission("Godlike.apple")) {
 					player.sendMessage(ChatColor.GOLD
 							+ "Get a golden apple effect - " + ChatColor.RED
@@ -148,9 +159,8 @@ public class main extends JavaPlugin {
 								+ "You must be a player to do this!");
 					}
 				} else {
-					sender
-							.sendMessage(ChatColor.DARK_RED
-									+ "You do not have the permission to use this command.");
+					sender.sendMessage(ChatColor.DARK_RED
+							+ "You do not have the permission to use this command.");
 				}
 			} else if (args[0].equalsIgnoreCase("Bow")) {
 				if (sender.isOp() || !player.hasPermission("Godlike.bow")) {
@@ -172,42 +182,56 @@ public class main extends JavaPlugin {
 								+ "You must be a player to do this!");
 					}
 				} else {
-					sender
-							.sendMessage(ChatColor.DARK_RED
-									+ "You do not have the permission to use this command.");
+					sender.sendMessage(ChatColor.DARK_RED
+							+ "You do not have the permission to use this command.");
 				}
 			} else if (args[0].equalsIgnoreCase("Armour")) {
 				if (sender.isOp() || !player.hasPermission("Godlike.armour")) {
 					if ((sender instanceof Player)) {
 						ItemStack helmet = new ItemStack(
 								Material.DIAMOND_HELMET, 1);
-						helmet.addEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL, 4);
+						helmet.addEnchantment(
+								Enchantment.PROTECTION_ENVIRONMENTAL, 4);
 						helmet.addEnchantment(Enchantment.PROTECTION_FIRE, 4);
-						helmet.addEnchantment(Enchantment.PROTECTION_EXPLOSIONS, 4);
-						helmet.addEnchantment(Enchantment.PROTECTION_PROJECTILE, 4);
+						helmet.addEnchantment(
+								Enchantment.PROTECTION_EXPLOSIONS, 4);
+						helmet.addEnchantment(
+								Enchantment.PROTECTION_PROJECTILE, 4);
 						helmet.addEnchantment(Enchantment.THORNS, 3);
 						helmet.addEnchantment(Enchantment.OXYGEN, 3);
 						helmet.addEnchantment(Enchantment.WATER_WORKER, 1);
 
-						ItemStack body = new ItemStack(Material.DIAMOND_CHESTPLATE, 1);
-						body.addEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL, 4);
+						ItemStack body = new ItemStack(
+								Material.DIAMOND_CHESTPLATE, 1);
+						body.addEnchantment(
+								Enchantment.PROTECTION_ENVIRONMENTAL, 4);
 						body.addEnchantment(Enchantment.PROTECTION_FIRE, 4);
-						body.addEnchantment(Enchantment.PROTECTION_EXPLOSIONS, 4);
-						body.addEnchantment(Enchantment.PROTECTION_PROJECTILE, 4);
+						body.addEnchantment(Enchantment.PROTECTION_EXPLOSIONS,
+								4);
+						body.addEnchantment(Enchantment.PROTECTION_PROJECTILE,
+								4);
 						body.addEnchantment(Enchantment.THORNS, 3);
 
-						ItemStack legs = new ItemStack(Material.DIAMOND_LEGGINGS, 1);
-						legs.addEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL, 4);
+						ItemStack legs = new ItemStack(
+								Material.DIAMOND_LEGGINGS, 1);
+						legs.addEnchantment(
+								Enchantment.PROTECTION_ENVIRONMENTAL, 4);
 						legs.addEnchantment(Enchantment.PROTECTION_FIRE, 4);
-						legs.addEnchantment(Enchantment.PROTECTION_EXPLOSIONS, 4);
-						legs.addEnchantment(Enchantment.PROTECTION_PROJECTILE, 4);
+						legs.addEnchantment(Enchantment.PROTECTION_EXPLOSIONS,
+								4);
+						legs.addEnchantment(Enchantment.PROTECTION_PROJECTILE,
+								4);
 						legs.addEnchantment(Enchantment.THORNS, 3);
 
-						ItemStack boots = new ItemStack(Material.DIAMOND_BOOTS, 1);
-						boots.addEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL, 4);
+						ItemStack boots = new ItemStack(Material.DIAMOND_BOOTS,
+								1);
+						boots.addEnchantment(
+								Enchantment.PROTECTION_ENVIRONMENTAL, 4);
 						boots.addEnchantment(Enchantment.PROTECTION_FIRE, 4);
-						boots.addEnchantment(Enchantment.PROTECTION_EXPLOSIONS, 4);
-						boots.addEnchantment(Enchantment.PROTECTION_PROJECTILE, 4);
+						boots.addEnchantment(Enchantment.PROTECTION_EXPLOSIONS,
+								4);
+						boots.addEnchantment(Enchantment.PROTECTION_PROJECTILE,
+								4);
 						boots.addEnchantment(Enchantment.THORNS, 3);
 						boots.addEnchantment(Enchantment.PROTECTION_FALL, 4);
 
@@ -223,46 +247,49 @@ public class main extends JavaPlugin {
 								+ "You must be a player to do this!");
 					}
 				} else {
-					sender
-							.sendMessage(ChatColor.DARK_RED
-									+ "You do not have the permission to use this command.");
+					sender.sendMessage(ChatColor.DARK_RED
+							+ "You do not have the permission to use this command.");
 				}
 			} else if (args[0].equalsIgnoreCase("Horse")) {
-				if(sender.isOp() || !player.hasPermission("Godlike.horse")) {
+				if (sender.isOp() || !player.hasPermission("Godlike.horse")) {
 					if ((sender instanceof Player)) {
-					
-				if (args.length == 1) {
-					player.sendMessage(ChatColor.GOLD + "Usage: /God Horse <Iron|Gold|Diamond|Saddle>");					
-				} else if (args[1].equalsIgnoreCase("Iron")) {
-					ItemStack IronHA = new ItemStack(417, 1);
-					
-					PlayerInventory pl = player.getInventory();
-					pl.addItem(IronHA);
-				} else if (args[1].equalsIgnoreCase("Gold")) {
-					ItemStack GoldHA = new ItemStack(418, 1);
-					
-					PlayerInventory pl = player.getInventory();
-					pl.addItem(GoldHA);
-				} else if (args[1].equalsIgnoreCase("Diamond")) {
-					ItemStack DiamondHA = new ItemStack(419, 1);
-					
-					PlayerInventory pl = player.getInventory();
-					pl.addItem(DiamondHA);
-				} else if (args[1].equalsIgnoreCase("Saddle")) {
-					ItemStack HorseSL = new ItemStack(Material.SADDLE, 1);
-					
-					PlayerInventory pl = player.getInventory();
-					pl.addItem(HorseSL);
+
+						if (args.length == 1) {
+							player.sendMessage(ChatColor.GOLD
+									+ "Usage: /God Horse <Iron|Gold|Diamond|Saddle>");
+						} else if (args[1].equalsIgnoreCase("Iron")) {
+							ItemStack IronHA = new ItemStack(417, 1);
+
+							PlayerInventory pl = player.getInventory();
+							pl.addItem(IronHA);
+						} else if (args[1].equalsIgnoreCase("Gold")) {
+							ItemStack GoldHA = new ItemStack(418, 1);
+
+							PlayerInventory pl = player.getInventory();
+							pl.addItem(GoldHA);
+						} else if (args[1].equalsIgnoreCase("Diamond")) {
+							ItemStack DiamondHA = new ItemStack(419, 1);
+
+							PlayerInventory pl = player.getInventory();
+							pl.addItem(DiamondHA);
+						} else if (args[1].equalsIgnoreCase("Saddle")) {
+							ItemStack HorseSL = new ItemStack(Material.SADDLE,
+									1);
+
+							PlayerInventory pl = player.getInventory();
+							pl.addItem(HorseSL);
+						}
+					} else {
+						sender.sendMessage(ChatColor.RED
+								+ "You must be a player to do this!");
 					}
 				} else {
-					sender.sendMessage(ChatColor.RED + "You must be a player to do this!");
+					sender.sendMessage(ChatColor.DARK_RED
+							+ "You do not have the permission to use this command.");
 				}
-				} else {
-					sender.sendMessage(ChatColor.DARK_RED + "You do not have the permission to use this command.");
-				}
-				
+
 			}
-			
+
 			else if (args[0].equalsIgnoreCase("Tools")) {
 				if (sender.isOp() || !player.hasPermission("Godlike.tools")) {
 					if ((sender instanceof Player)) {
@@ -301,9 +328,8 @@ public class main extends JavaPlugin {
 								+ "You must be a player to do this!");
 					}
 				} else {
-					sender
-							.sendMessage(ChatColor.DARK_RED
-									+ "You do not have the permission to use this command.");
+					sender.sendMessage(ChatColor.DARK_RED
+							+ "You do not have the permission to use this command.");
 				}
 			} else if (args[0].equalsIgnoreCase("apple")) {
 				if (sender.isOp() || !player.hasPermission("Godlike.apple")) {
@@ -338,9 +364,8 @@ public class main extends JavaPlugin {
 								+ "You must be a player to do this!");
 					}
 				} else {
-					sender
-							.sendMessage(ChatColor.DARK_RED
-									+ "You do not have the permission to use this command.");
+					sender.sendMessage(ChatColor.DARK_RED
+							+ "You do not have the permission to use this command.");
 				}
 			} else if (args[0].equalsIgnoreCase("power")) {
 				if (sender.isOp() || !player.hasPermission("Godlike.power")) {
@@ -373,9 +398,8 @@ public class main extends JavaPlugin {
 								+ "You must be a player to do this!");
 					}
 				} else {
-					sender
-							.sendMessage(ChatColor.DARK_RED
-									+ "You do not have the permission to use this command.");
+					sender.sendMessage(ChatColor.DARK_RED
+							+ "You do not have the permission to use this command.");
 				}
 			} else if (args[0].equalsIgnoreCase("speed")) {
 				if (sender.isOp() || !player.hasPermission("Godlike.speed")) {
@@ -407,7 +431,7 @@ public class main extends JavaPlugin {
 					}
 				} else {
 					sender.sendMessage(ChatColor.DARK_RED
-									+ "You do not have the permission to use this command.");
+							+ "You do not have the permission to use this command.");
 				}
 			}
 			return false;
