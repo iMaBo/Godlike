@@ -18,6 +18,7 @@ permissions:
        Godlike.bow: true
        Godlike.tools: true
        Godlike.horse: true
+       Godlike.fishing: true
        Godlike.apple: true
        Godlike.power: true
        Godlike.speed: true
@@ -36,6 +37,8 @@ permissions:
    Godlike.horse:
      description: Allows you to use the horse command to get horse armour and saddle
      default: op
+   Godlike.fishing:
+     description: Allows you to use the fishing command to get a enchanted Fishing Rod
    Godlike.apple:
      description: Allows you to get the golden apple effects
      default: op

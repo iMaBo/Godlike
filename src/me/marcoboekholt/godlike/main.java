@@ -64,7 +64,7 @@ public class main extends JavaPlugin {
 			if (args.length == 0) {
 				sender.sendMessage(ChatColor.RED + "Godlike version 2.1");
 				sender.sendMessage(ChatColor.GOLD
-						+ "/God <Sword|Armour|Bow|Horse|Tools|Apple|Power|Speed|info>");
+						+ "/God <Sword|Armour|Bow|Tools|Horse|Fishing|Apple|Power|Speed|info>");
 				return true;
 			} else if (args[0].equalsIgnoreCase("info")) {
 				player.sendMessage("Godlike information!");
@@ -258,17 +258,17 @@ public class main extends JavaPlugin {
 							player.sendMessage(ChatColor.GOLD
 									+ "Usage: /God Horse <Iron|Gold|Diamond|Saddle>");
 						} else if (args[1].equalsIgnoreCase("Iron")) {
-							ItemStack IronHA = new ItemStack(417, 1);
+							ItemStack IronHA = new ItemStack(Material.IRON_BARDING);
 
 							PlayerInventory pl = player.getInventory();
 							pl.addItem(IronHA);
 						} else if (args[1].equalsIgnoreCase("Gold")) {
-							ItemStack GoldHA = new ItemStack(418, 1);
+							ItemStack GoldHA = new ItemStack(Material.GOLD_BARDING);
 
 							PlayerInventory pl = player.getInventory();
 							pl.addItem(GoldHA);
 						} else if (args[1].equalsIgnoreCase("Diamond")) {
-							ItemStack DiamondHA = new ItemStack(419, 1);
+							ItemStack DiamondHA = new ItemStack(Material.DIAMOND_BARDING);
 
 							PlayerInventory pl = player.getInventory();
 							pl.addItem(DiamondHA);
@@ -288,6 +288,21 @@ public class main extends JavaPlugin {
 							+ "You do not have the permission to use this command.");
 				}
 
+			}
+			
+			else if (args[0].equalsIgnoreCase("Fishing")) {
+				if (sender.isOp() || !player.hasPermission("Godlike.fishing")) {
+					if ((sender instanceof Player)) {
+						ItemStack FRod = new ItemStack(Material.FISHING_ROD, 1);
+						FRod.addEnchantment(Enchantment.DURABILITY, 3);
+						FRod.addEnchantment(Enchantment.LURE, 3);
+						FRod.addEnchantment(Enchantment.LUCK, 3);
+					} else {
+						sender.sendMessage(ChatColor.RED + "You must be a player to do this!");
+					}
+				} else {
+					sender.sendMessage(ChatColor.RED + "You do not have the permission to use this command");
+				}
 			}
 
 			else if (args[0].equalsIgnoreCase("Tools")) {
