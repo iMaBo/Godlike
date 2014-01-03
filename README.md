@@ -1,3 +1,5 @@
+[![Coverage St atus](https://coveralls.io/repos/MarcoBoekholt/Godlike/badge.png)](https://coveralls.io/r/MarcoBoekholt/Godlike)
+
 Godlike
 =======
 
