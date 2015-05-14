@@ -1,5 +1,3 @@
-[![Build Status](https://travis-ci.org/MarcoBoekholt/Godlike.png?branch=master)](https://travis-ci.org/MarcoBoekholt/Godlike) [![Coverage St atus](https://coveralls.io/repos/MarcoBoekholt/Godlike/badge.png)](https://coveralls.io/r/MarcoBoekholt/Godlike)
-
 Godlike
 =======
 
