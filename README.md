@@ -17,5 +17,5 @@ Commands
 Author
 =======
 
-*   Author: Marco Boekholt
+*   Author: MaBo
 *   E-mail: dhrmabo@gmail.com
